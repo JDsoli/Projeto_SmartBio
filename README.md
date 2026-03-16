@@ -1,13 +1,15 @@
-# Projeto_SmartBio
+# Projeto SmartBio
+
 ---
 
-##Entrega 1 01/03/2026
-###Historias de usuário
+## Entrega 1 — 01/03/2026
 
-1-
-2-
-3-
-4-
-5-
-6-
-7-
+### Histórias de Usuário
+
+1. 
+2. 
+3. 
+4. 
+5. 
+6. 
+7. 
