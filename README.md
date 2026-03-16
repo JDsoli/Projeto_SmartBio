@@ -21,6 +21,7 @@
 7. Ela acessa o dashboard via Web para analisar o histórico de classificação de resíduos e entender o porquê a produção de gás caiu em determinada semanas, usando os alertas de suporte à decisão para orientar os fazendeiros 
 
 ### Link do figma
-[Figma]().
-
+[Figma]()
 ---
+### Link do video
+[Video]()
