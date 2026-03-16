@@ -12,11 +12,12 @@
 
 3. Como produtora rural, eu gostaria de pesquisar diferentes tipos de resíduos agrícolas e animais em um sistema simples, para descobrir quais podem gerar biogás e melhorar o aproveitamento dos recursos da fazenda.
 4. Como uma produtora rural, eu gostaria de verificar quais resíduos agrícolas e animais podem ser usados no biodigestor para produzir energia e reduzir o desperdício na propriedade.
-5. 
-6.
-7. 
+5. Como gestora de uma propriedade rural, eu gostaria de consultar em uma plataforma digital quais resíduos orgânicos produzidos na fazenda podem ser utilizados na produção de biogás, para identificar oportunidades de transformar esses resíduos em energia e reduzir desperdícios.
+6. 
+7.
 8. 
 9. 
+10. 
 
 ### Link do figma
 [Figma]().
