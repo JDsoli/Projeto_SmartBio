@@ -18,7 +18,7 @@
    
 6. José não é especialista em química ou biologia, por isso, ele tem medo de colocar o resíduo errado, como por exemplo: excesso de palha ou até mesmo material ácido, podendo até mesmo matar as bactérias do biodigestor, o que lhe causaria muitos problemas.
 
-7.Ela acessa o dashboard via Web para analisar o histórico de classificação de resíduos e entender o porquê a produção de gás caiu em determinada semanas, usando os alertas de suporte à decisão para orientar os fazendeiros 
+7. Ela acessa o dashboard via Web para analisar o histórico de classificação de resíduos e entender o porquê a produção de gás caiu em determinada semanas, usando os alertas de suporte à decisão para orientar os fazendeiros 
 
 ### Link do figma
 [Figma]().
