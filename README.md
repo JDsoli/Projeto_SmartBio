@@ -11,7 +11,7 @@
 2. Como um produtor rural, gostaria de saber quais os melhores resíduos para colocar no biodigestor, para conseguir máxima eficiência no que estou buscando.
 
 3. Como produtora rural, eu gostaria de pesquisar diferentes tipos de resíduos agrícolas e animais em um sistema simples, para descobrir quais podem gerar biogás e melhorar o aproveitamento dos recursos da fazenda.
-4. Como produtora rural, eu gostaria de pesquisar diferentes tipos de resíduos agrícolas e animais em um sistema simples, para descobrir quais podem gerar biogás e melhorar o aproveitamento dos recursos da fazenda
+4. Como uma produtora rural, eu gostaria de verificar quais resíduos agrícolas e animais podem ser usados no biodigestor para produzir energia e reduzir o desperdício na propriedade.
 5. 
 6.
 7. 
