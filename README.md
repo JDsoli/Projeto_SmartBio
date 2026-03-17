@@ -24,5 +24,5 @@
 [Figma](https://www.figma.com/design/3QcQxHQlRTlwh2wgBwX7v5/Untitled?node-id=10-3&t=gbu9VXnAMuAt9yC7-1)
 ---
 ### Link do video
-[Video]()
+[Video](https://www.youtube.com/watch?v=pxV4aqGPmeE)
 ---
