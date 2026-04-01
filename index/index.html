@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SmartBio</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <header class="navbar">
+        <div class="logo-container">
+            <img src="/img/Logo SmartBIO 2.png" alt="Ícone SmartBio" class="logo-img">
+            <div class="logo-texto">
+                <span class="cor-smart">SMART</span><span class="cor-bio">BIO</span>
+            </div>
+        </div>
+
+        <div class="menu-toggle" id="mobile-menu">
+            <i class="fa-solid fa-bars"></i>
+        </div>
+
+        <nav class="nav-links">
+            <ul>
+                <li><a href="#inicio">Início</a></li>
+                <li><a href="#como-funciona">Como Funciona</a></li>
+                <li><a href="#tecnologia">Tecnologia</a></li>
+                <li><a href="#contato">Contato</a></li>
+            </ul>
+        </nav>
+
+        <div class="nav-action">
+            <a href="#classificar" class="btn-primary">Classificar Resíduo</a>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <section class="hero-section">
+            <h1>Exemplo de h1</h1>
+            <p>Exemplo P Exemplo P Exemplo P Exemplo P Exemplo P Exemplo P Exemplo P Exemplo P Exemplo P Exemplo P Exemplo P Exemplo P Exemplo P Exemplo P Exemplo P Exemplo P Exemplo P Exemplo P Exemplo P Exemplo P Exemplo P Exemplo P Exemplo P Exemplo P Exemplo P Exemplo P Exemplo P Exemplo P Exemplo P Exemplo P Exemplo P Exemplo P Exemplo P Exemplo P Exemplo P Exemplo P Exemplo P Exemplo P Exemplo P Exemplo P Exemplo P Exemplo P Exemplo P Exemplo P Exemplo P Exemplo P Exemplo P Exemplo P Exemplo P Exemplo P Exemplo P Exemplo P Exemplo P Exemplo P Exemplo P Exemplo P Exemplo P Exemplo P </p>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="footer-container">
+            <div class="footer-column main-links">
+                <h2>Conecte-se conosco</h2>
+                <a href="#contato">Entre em contato</a>
+                <a href="#parceiros">Seja um parceiro rural</a>
+                <a href="#sobre">Saiba mais sobre o SmartBio</a>
+            </div>
+
+            <div class="footer-column small-links">
+                <a href="#quem-somos">Quem somos</a>
+                <a href="#como-funciona">Como a IA funciona</a>
+                <a href="#impacto">Impacto ambiental</a>
+                <a href="#tecnologia">Nossa tecnologia</a>
+            </div>
+
+            <div class="footer-column small-links">
+                <a href="#eventos">Eventos</a>
+                <a href="#imprensa">Imprensa</a>
+                <a href="#faq">Dúvidas frequentes</a>
+                <a href="#privacidade">Política de privacidade</a>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <div class="social-media">
+                <p>Acompanhe nossas redes sociais</p>
+                <div class="social-icons">
+                    <a href="#" class="icon-link"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="#" class="icon-link"><i class="fa-brands fa-linkedin-in"></i></a>
+                    <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" class="icon-link"><i class="fa-brands fa-youtube"></i></a>
+                    <a href="#" class="icon-link"><i class="fa-brands fa-instagram"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const menuToggle = document.querySelector('#mobile-menu');
+        const navLinks = document.querySelector('.nav-links');
+
+        menuToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            
+            const icone = menuToggle.querySelector('i');
+            if (navLinks.classList.contains('active')) {
+                icone.classList.remove('fa-bars');
+                icone.classList.add('fa-xmark');
+            } else {
+                icone.classList.remove('fa-xmark');
+                icone.classList.add('fa-bars');
+            }
+        });
+    </script>
+</body>
+</html>
