@@ -23,6 +23,15 @@
 ### Link do figma
 [Figma](https://www.figma.com/design/3QcQxHQlRTlwh2wgBwX7v5/Untitled?node-id=10-3&t=gbu9VXnAMuAt9yC7-1)
 ---
+
+## Entrega 2 — 06/04/2026
+
+### Histórias de Usuário
+
+8. Como um técnico agrícola, eu gostaria de receber recomendações automáticas no sistema sobre a proporção ideal de resíduos a serem inseridos no biodigestor, para garantir o equilíbrio do processo e maximizar a produção de biogás.
+
+9. Como um operador iniciante de biodigestor, eu gostaria de visualizar alertas e avisos no sistema quando um resíduo inadequado for selecionado, para evitar erros que possam comprometer o funcionamento e a eficiência do biodigestor.
+
 ### Link do video
 [Video](https://www.youtube.com/watch?v=pxV4aqGPmeE)
 ---
