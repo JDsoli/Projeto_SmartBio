@@ -1,0 +1,15 @@
+# Arquivos sensíveis
+application.properties
+
+# Arquivos de ambiente
+.env
+
+# Logs
+*.log
+
+# Build Java
+/target/
+
+# IDEs
+.vscode/
+.idea/

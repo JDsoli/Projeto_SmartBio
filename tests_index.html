@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SmartBio | Inteligência em Biodigestão</title>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --primary: #3F8443;
+            --primary-dark: #0A3E2E;
+            --accent: #f59e0b;
+            --accent-dark: #d97706;
+            --text-main: #1f2937;
+            --text-light: #6b7280;
+            --bg-body: #f3f4f6;
+            --white: #ffffff;
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        /* Reset e Base */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { 
+            font-family: 'Inter', sans-serif; 
+            background-color: var(--bg-body); 
+            color: var(--text-main);
+            line-height: 1.6;
+            overflow-x: hidden;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        .hidden { display: none !important; }
+
+        /* Navbar */
+        .navbar { 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+            padding: 0 5%; 
+            background: rgba(255, 255, 255, 0.87);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03); 
+            height: 90px; 
+            position: sticky; 
+            top: 0; 
+            z-index: 1000; 
+        }
+
+        .logo-container { display: flex; align-items: center; gap: 15px; text-decoration: none; cursor: pointer; }
+        .logo-img { height: 50px; }
+        .logo-texto { font-size: 1.6rem; font-weight: 800; letter-spacing: -1px; }
+        .cor-smart { color: var(--primary); }
+        .cor-bio { color: var(--primary-dark); }
+
+        .nav-links ul { display: flex; list-style: none; gap: 2.5rem; }
+        .nav-links a { text-decoration: none; color: var(--text-light); font-weight: 500; transition: var(--transition); cursor: pointer; }
+        .nav-links a:hover { color: var(--primary); }
+
+        /* Hero Section */
+        .hero-container {
+            position: relative; height: 80vh; display: flex;
+            align-items: center; padding: 0 5%; overflow: hidden;
+            background: #1a1a1a;
+        }
+
+        #hero-video {
+            position: absolute; top: 50%; left: 50%;
+            min-width: 100%; min-height: 100%;
+            width: auto; height: auto; z-index: 1;
+            transform: translate(-50%, -50%);
+            opacity: 0.5; 
+            object-fit: cover;
+            filter: brightness(0.6) contrast(1.1);
+        }
+
+        .hero-content { position: relative; z-index: 2; max-width: 900px; color: var(--white); }
+        .hero-content h1 { font-size: clamp(2.2rem, 5vw, 3.8rem); line-height: 1.1; margin-bottom: 2rem; font-weight: 800; }
+        .hero-content p { font-size: 1.3rem; margin-bottom: 2.5rem; opacity: 0.95; font-weight: 400; max-width: 700px; }
+
+        /* Botões */
+        .btn-primary { 
+            text-decoration: none; background: var(--primary); color: var(--white); 
+            padding: 1.2rem 2.8rem; border-radius: 50px; font-weight: 600; 
+            transition: var(--transition); cursor: pointer; border: none;
+            display: inline-flex; align-items: center; gap: 10px; font-size: 1.1rem;
+        }
+        .btn-primary:hover { background: var(--primary-dark); transform: translateY(-3px); }
+
+        /* Seção de Classificação - AQUI FOI ALTERADO */
+        .classification-section { 
+            max-width: 1100px; margin: 4rem auto; 
+            padding: 3rem; background: var(--white);
+            border-radius: 24px; box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+        }
+
+        .energy-display-info {
+            background: #f8fafc;
+            padding: 2rem;
+            border-radius: 15px;
+            border-left: 6px solid var(--primary);
+            margin-bottom: 2rem;
+        }
+
+        .usage-select {
+            width: 100%;
+            padding: 1rem;
+            border-radius: 10px;
+            border: 1px solid #cbd5e1;
+            font-family: 'Inter', sans-serif;
+            font-size: 1rem;
+            margin-top: 1rem;
+        }
+
+        /* Documentação */
+        .docs-section { padding: 4rem 5%; background: #fdfdfd; border-top: 1px solid #eee; }
+        .docs-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; margin-top: 3rem; }
+        .doc-card { padding: 2.5rem; border-radius: 20px; background: var(--white); box-shadow: 0 10px 30px rgba(0,0,0,0.02); border-bottom: 5px solid var(--primary); }
+        .doc-card i { font-size: 2rem; color: var(--primary); margin-bottom: 1.5rem; display: block; }
+
+        /* Footer */
+        .site-footer { background: #111; color: var(--white); padding: 5rem 5% 2rem; margin-top: auto; }
+        .footer-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 4rem; }
+        .footer-column a { color: #9ca3af; text-decoration: none; display: block; margin-bottom: 0.8rem; }
+
+        @media (max-width: 768px) {
+            .nav-links, .nav-action { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="navbar">
+        <div class="logo-container" id="nav-inicio-logo">
+            <img src="./assets/img/Logo SmartBIO 2.png" alt="SmartBio Logo" class="logo-img" onerror="this.src='https://via.placeholder.com/50?text=BIO'">
+            <div class="logo-texto"><span class="cor-smart">SMART</span><span class="cor-bio">BIO</span></div>
+        </div>
+        <nav class="nav-links">
+            <ul>
+                <li><a id="nav-inicio">Início</a></li>
+                <li><a href="#docs-area">Documentação</a></li>
+                <li><a href="#">Tecnologia</a></li>
+                <li><a href="#">Contato</a></li>
+            </ul>
+        </nav>
+        <div class="nav-action">
+            <a class="btn-primary" id="btn-nav-classificar" style="padding: 0.7rem 1.5rem; font-size: 0.9rem;">Classificar Resíduo</a>
+        </div>
+    </header>
+
+    <main>
+        <div id="home-content">
+            <section class="hero-container" id="hero-area">
+                <video autoplay muted loop playsinline id="hero-video">
+                    <source src="/assets/video/Vídeo_de_Fundo_com_Pessoas_Trabalhando.mp4" type="video/mp4">
+                </video>
+                <div class="hero-content">
+                    <h1>O Futuro da Energia Rural Começa com a Inteligência SmartBio</h1>
+                    <p>Transformamos o passivo ambiental em autonomia energética através de biodigestão inteligente e monitoramento IoT em tempo real.</p>
+                    <button class="btn-primary" onclick="showClassification()">Começar Agora <i class="fas fa-arrow-right"></i></button>
+                </div>
+            </section>
+
+            <section class="docs-section" id="docs-area" style="background-color: #ffffff; padding: 60px 5%;">
+    <div style="max-width: 1000px; margin: 0 auto;">
+        <h2 style="font-size: 2.5rem; color: var(--primary-dark); margin-bottom: 40px; border-bottom: 2px solid var(--primary); padding-bottom: 10px;">
+            Documentação Técnica e Fundamentos SMartBio
+        </h2>
+
+        <article style="margin-bottom: 40px;">
+            <h3 style="color: var(--primary); margin-bottom: 15px;"><i class="fas fa-recycle"></i> 1. O Processo de Biodigestão Anaeróbica</h3>
+            <p style="color: var(--text-main); text-align: justify;">
+                O sistema baseia-se na decomposição biológica de resíduos orgânicos (biomassa) em um ambiente isolado de oxigênio, conhecido como zona de fermentação. Este processo converte dejetos e água em dois subprodutos principais: o <strong>biogás</strong>, rico em metano (CH4), e o <strong>biofertilizante</strong> líquido de alta qualidade.
+            </p>
+        </article>
+
+        <article style="margin-bottom: 40px;">
+            <h3 style="color: var(--primary); margin-bottom: 15px;"><i class="fas fa-microchip"></i> 2. Arquitetura de Hardware e Monitoramento IoT</h3>
+            <p style="color: var(--text-main); text-align: justify;">
+                A inteligência do SMartBio reside na sua camada de sensoriamento. Utilizamos microcontroladores da família <strong>ESP8266 (WeMos D1 mini)</strong> integrados a sensores industriais. 
+            </p>
+            <ul style="margin-top: 10px; margin-left: 20px; color: var(--text-light);">
+                <li><strong>Sensores de pH:</strong> Monitoram a acidez da biomassa para garantir a saúde das colônias bacterianas.</li>
+                <li><strong>Sensores de Pressão:</strong> Verificam o volume de gás acumulado no domo (Gas Collector).</li>
+                <li><strong>Telemetria em Tempo Real:</strong> Dados enviados via Wi-Fi para a plataforma Web para análise preditiva.</li>
+            </ul>
+        </article>
+
+        <article style="margin-bottom: 40px;">
+            <h3 style="color: var(--primary); margin-bottom: 15px;"><i class="fas fa-engine"></i> 3. Conversão Energética e Motor-Gerador</h3>
+            <p style="color: var(--text-main); text-align: justify;">
+                O biogás coletado é direcionado para um motor-gerador, onde ocorre a queima do metano na câmara de combustão. O gerador, acoplado ao motor, transforma essa energia mecânica em energia elétrica. A eficiência desse sistema depende diretamente do volume de gás gerado por hora, permitindo prever o período de funcionamento diário do motor.
+            </p>
+        </article>
+
+        <article style="margin-bottom: 40px;">
+            <h3 style="color: var(--primary); margin-bottom: 15px;"><i class="fas fa-file-contract"></i> 4. Viabilidade e Normativa ANEEL</h3>
+            <p style="color: var(--text-main); text-align: justify;">
+                O projeto SMartBio está em total conformidade com a <strong>Resolução Normativa 482/2012 da ANEEL</strong>. Esta normativa permite que microgeradores (até 100 kW) e minigeradores (até 1 MW) injetem o excedente de energia na rede de distribuição local.
+            </p>
+            <p style="color: var(--text-main); margin-top: 10px;">
+                O saldo positivo gera <strong>créditos de energia</strong> válidos por até 36 meses, que podem ser usados para abater o consumo da própria unidade ou de outras unidades do mesmo titular.
+            </p>
+        </article>
+
+        <article style="margin-bottom: 40px; background-color: #f0f7f0; padding: 25px; border-radius: 12px;">
+            <h3 style="color: var(--primary-dark); margin-bottom: 15px;"><i class="fas fa-globe-americas"></i> 5. Impacto Ambiental e Agenda 2030</h3>
+            <p style="color: var(--text-main); text-align: justify;">
+                Alinhado aos Objetivos de Desenvolvimento Sustentável da ONU, o sistema foca na <strong>Energia Limpa e Acessível (ODS 7)</strong> e no <strong>Consumo e Produção Responsáveis (ODS 12)</strong>. A tecnologia transforma um passivo ambiental (dejetos) em autonomia energética e redução de impactos no clima (ODS 13).
+            </p>
+        </article>
+    </div>
+</section>
+
+            <footer class="site-footer">
+                <div class="footer-container">
+                    <div class="footer-column">
+                        <h2 style="color: var(--primary);">SmartBio</h2>
+                        <a href="#">Sobre o Projeto</a>
+                        <a href="#">ADS CESAR School</a>
+                        <a href="#">Impacto Ambiental</a>
+                    </div>
+                    <div class="footer-column">
+                        <h2 style="color: var(--primary);">Documentação</h2>
+                        <a href="#">Hardware (C/C++)</a>
+                        <a href="#">Manual do Biodigestor</a>
+                        <a href="#">Monitoramento IA</a>
+                    </div>
+                    <div class="footer-column">
+                        <h2 style="color: var(--primary);">Social</h2>
+                        <div style="display: flex; gap: 1.5rem; font-size: 1.5rem;">
+                            <a href="#"><i class="fab fa-linkedin"></i></a>
+                            <a href="#"><i class="fab fa-github"></i></a>
+                            <a href="#"><i class="fab fa-instagram"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <p style="text-align: center; margin-top: 4rem; color: #555; font-size: 0.8rem; border-top: 1px solid #222; padding-top: 2rem;">
+                    &copy; 2026 SmartBio - Projeto Acadêmico de Análise e Desenvolvimento de Sistemas.
+                </p>
+            </footer>
+        </div>
+
+        <section class="classification-section hidden" id="classification-area">
+            <h2 style="font-size: 2.2rem; color: var(--primary-dark); margin-bottom: 1rem;">Análise de Resíduo para Produção</h2>
+            <p style="color: var(--text-light); margin-bottom: 2.5rem;">Selecione uma imagem do resíduo para calcular o potencial de biogás.</p>
+
+            <div style="display: grid; place-items: center; border: 3px dashed #cbd5e1; padding: 4rem; border-radius: 24px; background: #fafafa;">
+                <input type="file" id="image-upload" class="hidden" accept="image/*">
+                <button class="btn-primary" id="btn-start-classify"><i class="fas fa-camera"></i> Selecionar Imagem do Resíduo</button>
+            </div>
+
+            <div id="results-area" class="hidden" style="margin-top: 3rem;">
+                <div class="energy-display-info">
+                    <h3 style="color: var(--primary-dark); margin-bottom: 0.5rem;">Item Detectado: <span id="detected-item">Analisando...</span></h3>
+                    <p style="font-size: 1.2rem; font-weight: 600;">Potencial Energético: <span id="energy-yield" style="color: var(--primary);">0</span> kWh</p>
+                </div>
+
+                <div style="margin-top: 2rem;">
+                    <label style="font-weight: 700; color: var(--primary-dark);">O que deseja fazer com essa energia?</label>
+                    <select id="usage-option" class="usage-select">
+                        <option value="">Selecione uma aplicação...</option>
+                        <option value="carro">Carregar carro elétrico</option>
+                        <option value="paes">Geração de pães</option>
+                        <option value="casa">Autoconsumo de uma casa</option>
+                    </select>
+                </div>
+
+                <div id="usage-result" class="hidden" style="margin-top: 2rem; padding: 1.5rem; background: #e8f5e9; border-radius: 12px; font-weight: 500;">
+                    <p id="calculation-text"></p>
+                    <button class="btn-primary" style="margin-top: 1.5rem; background: var(--accent);" id="btn-confirm-energy">Confirmar e Utilizar Energia</button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        const homeContent = document.getElementById('home-content');
+        const classificationArea = document.getElementById('classification-area');
+        const resultsArea = document.getElementById('results-area');
+        const usageResult = document.getElementById('usage-result');
+        const fileInput = document.getElementById('image-upload');
+        const spanItem = document.getElementById('detected-item');
+        const spanYield = document.getElementById('energy-yield');
+        const calcText = document.getElementById('calculation-text');
+        
+        let energiaProduzida = 0;
+
+        function showClassification() {
+            homeContent.classList.add('hidden');
+            classificationArea.classList.remove('hidden');
+            window.scrollTo(0,0);
+        }
+
+        function showHome() {
+            classificationArea.classList.add('hidden');
+            homeContent.classList.remove('hidden');
+            resultsArea.classList.add('hidden');
+        }
+
+        document.getElementById('btn-nav-classificar').addEventListener('click', showClassification);
+        document.getElementById('nav-inicio').addEventListener('click', showHome);
+        document.getElementById('nav-inicio-logo').addEventListener('click', showHome);
+        document.getElementById('btn-start-classify').addEventListener('click', () => fileInput.click());
+
+        fileInput.addEventListener('change', function(e) {
+            if (e.target.files[0]) {
+                resultsArea.classList.remove('hidden');
+                spanItem.innerText = "Analisando com IA...";
+                setTimeout(() => {
+                    spanItem.innerText = "Resíduos Orgânicos (Bovinos)";
+                    energiaProduzida = 3.25; // Conforme o vídeo
+                    spanYield.innerText = energiaProduzida;
+                }, 1500);
+            }
+        });
+
+        document.getElementById('usage-option').addEventListener('change', function(e) {
+            const op = e.target.value;
+            if(!op) { usageResult.classList.add('hidden'); return; }
+            usageResult.classList.remove('hidden');
+
+            if(op === 'carro') {
+                calcText.innerText = `Com ${energiaProduzida} kWh, você conseguirá percorrer aproximadamente 21,1 km de autonomia.`;
+            } else if (op === 'paes') {
+                calcText.innerText = `Esta energia permite produzir cerca de 65 pães na sua propriedade.`;
+            } else {
+                calcText.innerText = `Esta carga mantém o autoconsumo da sua casa por aproximadamente 0,4 dias.`;
+            }
+        });
+
+        document.getElementById('btn-confirm-energy').addEventListener('click', () => {
+            alert("Sucesso! A energia foi processada e direcionada para a aplicação escolhida.");
+            showHome();
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SmartBio</title>
+    <link rel="stylesheet" href="teste.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <header class="navbar">
+        <div class="logo-container">
+            <img src="/img/Logo SmartBIO 2.png" alt="Ícone SmartBio" class="logo-img">
+            <div class="logo-texto">
+                <span class="cor-smart">SMART</span><span class="cor-bio">BIO</span>
+            </div>
+        </div>
+
+        <div class="menu-toggle" id="mobile-menu">
+            <i class="fa-solid fa-bars"></i>
+        </div>
+
+        <nav class="nav-links">
+            <ul>
+                <li><a href="#inicio">Início</a></li>
+                <li><a href="#como-funciona">Como Funciona</a></li>
+                <li><a href="#tecnologia">Tecnologia</a></li>
+                <li><a href="#contato">Contato</a></li>
+            </ul>
+        </nav>
+
+        <div class="nav-action">
+            <a href="#classificar" class="btn-primary">Classificar Resíduo</a>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <section class="classify-section" id="classificar">
+            <div class="section-header">
+                <h1>Classificar Novo Resíduo</h1>
+                <p>Envie as informações do seu resíduo para análise simulada da nossa Inteligência Artificial.</p>
+            </div>
+
+            <div class="classify-container">
+                <div class="classify-card form-card">
+                    <form id="classify-form">
+                        <div class="form-group">
+                            <label for="waste-type">Tipo de Resíduo Orgânico</label>
+                            <select id="waste-type" name="waste-type" required>
+                                <option value="" disabled selected>Selecione uma opção...</option>
+                                <option value="manure">Estrume Bovino</option>
+                                <option value="crop">Resíduo de Colheita</option>
+                                <option value="food">Restos de Alimentos</option>
+                                <option value="other">Outro</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="waste-origin">Origem (ex: Galpão A, Horta Norte)</label>
+                            <input type="text" id="waste-origin" name="waste-origin" placeholder="Digite a origem do resíduo" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="waste-quantity">Quantidade Estimada (em kg)</label>
+                            <input type="number" id="waste-quantity" name="waste-quantity" placeholder="0" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Imagem do Resíduo (para simular Visão Computacional)</label>
+                            
+                            <div class="file-zone">
+                                <label for="waste-image" class="file-label" id="file-label-btn">
+                                    <i class="fa-solid fa-camera"></i> Selecionar Imagem
+                                </label>
+                                <input type="file" id="waste-image" name="waste-image" accept="image/*">
+
+                                <div class="file-preview-wrapper is-hidden" id="file-preview-zone">
+                                    <div class="file-preview">
+                                        <img src="" alt="Thumbnail" id="preview-img">
+                                        <span class="cancel-preview" id="cancel-preview-btn">&times;</span>
+                                    </div>
+                                    <p class="file-description">Imagem anexada para análise.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <button type="submit" class="btn-submit" id="btn-analyze">Analisar Resíduo (Simular)</button>
+                    </form>
+                </div>
+
+                <div class="classify-card info-card" id="results-card">
+                    <div class="info-header" id="results-header">
+                        <i class="fa-solid fa-microchip"></i>
+                        <h2 id="results-title">Análise da IA (Simulação)</h2>
+                    </div>
+
+                    <div class="result-placeholder" id="results-placeholder">
+                        <p>O resultado fictício aparecerá aqui após clicar em analisar.</p>
+                    </div>
+
+                    <div class="results-display is-hidden" id="results-display">
+                        <div class="result-panel">
+                            <div class="result-metric">
+                                <i class="fa-solid fa-cow"></i>
+                                <div class="metric-data">
+                                    <span class="metric-value" id="result-classification">Carregando...</span>
+                                    <span class="metric-label">Identificação do Resíduo</span>
+                                </div>
+                            </div>
+                            <div class="result-confidence">
+                                <span class="confidence-label">Confiança:</span>
+                                <span class="confidence-value" id="result-confidence-score">98%</span>
+                            </div>
+                        </div>
+
+                        <div class="result-panel highlight">
+                            <div class="result-metric">
+                                <i class="fa-solid fa-fire"></i>
+                                <div class="metric-data">
+                                    <span class="metric-value"><span id="result-biogas">0</span> m³</span>
+                                    <span class="metric-label">Potencial de Biogás Estimado</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="result-panel">
+                            <h4><i class="fa-solid fa-list-check"></i> Próximos Passos Recomendados</h4>
+                            <ul class="recommendations">
+                                <li><i class="fa-solid fa-vial"></i> Pré-tratamento: <span id="result-pretreatment">Diluição sutil (1:1).</span></li>
+                                <li><i class="fa-solid fa-chart-line"></i> Taxa de Alimentação: <span id="result-feeding">25 kg/dia.</span></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="footer-container">
+            <div class="footer-column main-links">
+                <h2>Conecte-se conosco</h2>
+                <a href="#contato">Entre em contato</a>
+                <a href="#parceiros">Seja um parceiro rural</a>
+                <a href="#sobre">Saiba mais sobre o SmartBio</a>
+            </div>
+
+            <div class="footer-column small-links">
+                <a href="#quem-somos">Quem somos</a>
+                <a href="#como-funciona">Como a IA funciona</a>
+                <a href="#impacto">Impacto ambiental</a>
+                <a href="#tecnologia">Nossa tecnologia</a>
+            </div>
+
+            <div class="footer-column small-links">
+                <a href="#eventos">Eventos</a>
+                <a href="#imprensa">Imprensa</a>
+                <a href="#faq">Dúvidas frequentes</a>
+                <a href="#privacidade">Política de privacidade</a>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <div class="social-media">
+                <p>Acompanhe nossas redes sociais</p>
+                <div class="social-icons">
+                    <a href="#" class="icon-link"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="#" class="icon-link"><i class="fa-brands fa-linkedin-in"></i></a>
+                    <a href="#" class="icon-link"><i class="fa-brands fa-youtube"></i></a>
+                    <a href="#" class="icon-link"><i class="fa-brands fa-instagram"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <div class="chatbot-bubble" id="chatbot-toggle">
+        <i class="fa-solid fa-comments"></i>
+    </div>
+
+    <div class="chatbot-window" id="chatbot-window">
+        <div class="chatbot-header">
+            <h3><i class="fa-solid fa-leaf"></i> SmartBio AI</h3>
+            <span class="close-chat" id="close-chat">&times;</span>
+        </div>
+        <div class="chatbot-body">
+            <div class="message ai-message">
+                <p>Olá! Sou a assistente do SmartBio. Como posso te ajudar com a biodigestão hoje?</p>
+            </div>
+            <div class="message user-message">
+                <p>Preciso classificar um resíduo de estrume bovino.</p>
+            </div>
+        </div>
+        <div class="chatbot-input">
+            <input type="text" placeholder="Digite sua dúvida...">
+            <button><i class="fa-solid fa-paper-plane"></i></button>
+        </div>
+    </div>
+
+    <script>
+        // --- SCRIPT DO MENU HAMBÚRGUER ---
+        const menuToggle = document.querySelector('#mobile-menu');
+        const navLinks = document.querySelector('.nav-links');
+
+        menuToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            
+            const icone = menuToggle.querySelector('i');
+            if (navLinks.classList.contains('active')) {
+                icone.classList.remove('fa-bars');
+                icone.classList.add('fa-xmark');
+            } else {
+                icone.classList.remove('fa-xmark');
+                icone.classList.add('fa-bars');
+            }
+        });
+
+        // --- SCRIPT DO CHATBOT ---
+        const chatbotToggle = document.querySelector('#chatbot-toggle');
+        const chatbotWindow = document.querySelector('#chatbot-window');
+        const closeChat = document.querySelector('#close-chat');
+
+        chatbotToggle.addEventListener('click', () => {
+            chatbotWindow.classList.toggle('active');
+        });
+
+        closeChat.addEventListener('click', () => {
+            chatbotWindow.classList.remove('active');
+        });
+
+        // --- SCRIPT DE SIMULAÇÃO DE ANÁLISE (O NOVO CORAÇÃO DO PROTO) ---
+        
+        // 1. Gerenciamento do Preview da Imagem (Funcional no navegador)
+        const fileInput = document.getElementById('waste-image');
+        const fileLabelBtn = document.getElementById('file-label-btn');
+        const filePreviewZone = document.getElementById('file-preview-zone');
+        const previewImg = document.getElementById('preview-img');
+        const cancelPreviewBtn = document.getElementById('cancel-preview-btn');
+
+        fileInput.addEventListener('change', function(event) {
+            const file = event.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    previewImg.src = e.target.result; // Coloca a imagem lida na tag <img>
+                    fileLabelBtn.classList.add('is-hidden'); // Esconde o botão de upload
+                    filePreviewZone.classList.remove('is-hidden'); // Mostra a miniatura
+                }
+                reader.readAsDataURL(file); // Lê o arquivo localmente
+            }
+        });
+
+        cancelPreviewBtn.addEventListener('click', function() {
+            fileInput.value = ""; // Limpa o input do arquivo
+            filePreviewZone.classList.add('is-hidden'); // Esconde a miniatura
+            fileLabelBtn.classList.remove('is-hidden'); // Mostra o botão de upload
+        });
+
+        // 2. Simulação da Análise da IA
+        const classifyForm = document.getElementById('classify-form');
+        const btnAnalyze = document.getElementById('btn-analyze');
+        const resultsPlaceholder = document.getElementById('results-placeholder');
+        const resultsDisplay = document.getElementById('results-display');
+        const resultsTitle = document.getElementById('results-title');
+        
+        // Elementos dos resultados fictícios
+        const resultClassification = document.getElementById('result-classification');
+        const resultConfidence = document.getElementById('result-confidence-score');
+        const resultBiogas = document.getElementById('result-biogas');
+        const resultPretreatment = document.getElementById('result-pretreatment');
+        const resultFeeding = document.getElementById('result-feeding');
+
+        // "Base de dados" fictícia para simulação
+        const fakeWasteData = {
+            manure: { name: "Estrume Bovino", confidence: "98%", biogasPerKg: 0.25, pretreatment: "Diluição sutil (1:1).", icon: "fa-cow" },
+            crop: { name: "Resíduo de Colheita", confidence: "94%", biogasPerKg: 0.18, pretreatment: "Trituração fina recomendada.", icon: "fa-seedling" },
+            food: { name: "Restos de Alimentos", confidence: "96%", biogasPerKg: 0.35, pretreatment: "Remover inorgânicos.", icon: "fa-utensils" },
+            other: { name: "Orgânico Misto", confidence: "85%", biogasPerKg: 0.20, pretreatment: "Análise de laboratório sugerida.", icon: "fa-box-open" }
+        };
+
+        classifyForm.addEventListener('submit', function(event) {
+            event.preventDefault(); // Impede o envio real do formulário
+            
+            // Pega os dados que você preencheu
+            const wasteTypeKey = document.getElementById('waste-type').value;
+            const quantity = parseFloat(document.getElementById('waste-quantity').value);
+            const wasteOrigin = document.getElementById('waste-origin').value;
+
+            // Mostra o estado de "Carregando"
+            resultsPlaceholder.classList.add('is-hidden');
+            resultsDisplay.classList.add('is-hidden');
+            resultsTitle.innerHTML = `<i class="fa-solid fa-spinner fa-spin"></i> Analisando...`;
+            btnAnalyze.innerText = "Analisando Resíduo...";
+            btnAnalyze.disabled = true; // Desabilita o botão
+
+            // Simula um atraso de 3 segundos para parecer processamento real
+            setTimeout(() => {
+                const wasteInfo = fakeWasteData[wasteTypeKey];
+                
+                // Calcula biogás fictício
+                const simulatedBiogas = (quantity * wasteInfo.biogasPerKg).toFixed(1);
+                const feedingRate = (quantity / 20).toFixed(0); // Sugestão simples fictícia
+
+                // Atualiza a tela com os resultados simulados
+                resultClassification.innerText = wasteInfo.name;
+                resultConfidence.innerText = wasteInfo.confidence;
+                resultBiogas.innerText = simulatedBiogas;
+                resultPretreatment.innerText = wasteInfo.pretreatment;
+                resultFeeding.innerText = `${feedingRate} kg/dia recomendados`;
+
+                // Mostra os resultados na tela com animação sutil
+                resultsTitle.innerText = "Resultado da Análise da IA";
+                resultsDisplay.classList.remove('is-hidden');
+                btnAnalyze.innerText = "Analisar Resíduo (Simular)";
+                btnAnalyze.disabled = false; // Reabilita o botão
+
+                // Mostra um alerta simulado de processamento da imagem
+                const fileZone = document.querySelector('.file-zone');
+                if (fileZone.querySelector('#preview-img').src !== "") {
+                   alert("Análise da IA Funcional: A imagem foi processada com sucesso via visão computacional (Simulado).");
+                }
+
+            }, 3000); // 3000ms = 3 segundos
+        });
+    </script>
+</body>
+</html>

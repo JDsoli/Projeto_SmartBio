@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Resposta - Análise de Biodigestor</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+    <main class="main-content">
+        <h1>Resultado da Análise</h1>
+
+        <div class="resultado-container">
+            <h3>Resíduo:</h3>
+            <p th:text="${titulo}"></p>
+
+            <hr>
+
+            <h3>Potencial para Biodigestor:</h3>
+            <div class="descricao-ia">
+                <p th:text="${resultadoIA}">Aguardando análise da IA...</p>
+            </div>
+        </div>
+
+        <br>
+        <a href="/">
+            <button class="btn-primary">Voltar</button>
+        </a>
+    </main>
+</body>
+</html>
