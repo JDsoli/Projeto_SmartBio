@@ -1,128 +1,87 @@
-// 1. MENU MOBILE
-const menuToggle = document.querySelector('#mobile-menu');
-const navLinks = document.querySelector('.nav-links');
-
-if(menuToggle) {
-    menuToggle.addEventListener('click', () => {
-        navLinks.classList.toggle('active');
-        const icone = menuToggle.querySelector('i');
-        if (navLinks.classList.contains('active')) {
-            icone.classList.remove('fa-bars');
-            icone.classList.add('fa-xmark');
-        } else {
-            icone.classList.remove('fa-xmark');
-            icone.classList.add('fa-bars');
-        }
-    });
-}
-
-// 2. LÓGICA DA CLASSIFICAÇÃO E ENERGIA
-const btnNavClassificar = document.getElementById('btn-nav-classificar');
-const linkInicio = document.getElementById('nav-inicio');
-const areaHero = document.getElementById('hero-area');
-const areaClassification = document.getElementById('classification-area');
-const areaResults = document.getElementById('results-area');
+// 1. Referências dos Elementos (Verifique se esses IDs batem com seu HTML)
+const fileInput = document.getElementById('image-upload');
 const btnStartClassify = document.getElementById('btn-start-classify');
-const btnRecycleItem = document.getElementById('btn-recycle-item');
-const spanEnergyValue = document.getElementById('energy-value');
-const energyBar = document.getElementById('energy-bar');
+const areaResults = document.getElementById('results-area'); // A div que contém os resultados
+const imgPreview = document.getElementById('image-preview'); // A tag <img> para o preview
+
+// Textos de resultado
 const spanDetectedItem = document.getElementById('detected-item');
 const spanItemType = document.getElementById('item-type');
 const spanEnergyYield = document.getElementById('energy-yield');
+const btnRecycleItem = document.getElementById('btn-recycle-item');
 
-// Elementos novos para o Upload de Imagem
-const fileInput = document.getElementById('image-upload');
-const imgPreview = document.getElementById('image-preview');
+// Barra de energia
+const energyBar = document.getElementById('energy-bar');
+const spanEnergyValue = document.getElementById('energy-value');
 
 let totalEnergiaAcumulada = 0;
 let energiaDesteItem = 0;
-const MAX_ENERGIA_BARRA = 20; // 20 kWh enche a barra toda no nosso teste
+const MAX_ENERGIA_BARRA = 20;
 
-function atualizarBarraEnergia() {
-    spanEnergyValue.innerText = totalEnergiaAcumulada.toFixed(1);
-    let porcentagem = (totalEnergiaAcumulada / MAX_ENERGIA_BARRA) * 100;
-    if (porcentagem > 100) porcentagem = 100;
-    energyBar.style.width = `${porcentagem}%`;
-}
-
-// Simula a IA detectando a latinha
-function simularApiClassificacao() {
-    spanDetectedItem.innerText = "Lata de Refrigerante";
-    spanItemType.innerText = "Alumínio";
-    energiaDesteItem = 5.5; // Valor do rendimento
-    spanEnergyYield.innerText = energiaDesteItem;
-    btnRecycleItem.style.display = 'flex'; // Mostra o botão
-}
-
-// Troca de "Páginas"
-if(btnNavClassificar) {
-    btnNavClassificar.addEventListener('click', (e) => {
-        e.preventDefault();
-        areaHero.classList.add('hidden');
-        areaClassification.classList.remove('hidden');
-    });
-}
-
-if(linkInicio) {
-    linkInicio.addEventListener('click', (e) => {
-        e.preventDefault();
-        areaHero.classList.remove('hidden');
-        areaClassification.classList.add('hidden');
-    });
-}
-
-// ----------------------------------------------------
-// NOVO: LÓGICA DE UPLOAD E PREVIEW DE IMAGEM
-// ----------------------------------------------------
-
-// Clicar no botão aciona o input escondido
-if(btnStartClassify) {
+// 2. Evento de Clique no Botão de Upload
+if (btnStartClassify) {
     btnStartClassify.addEventListener('click', () => {
-        fileInput.click(); 
+        fileInput.click();
     });
 }
 
-// Quando o arquivo é escolhido
-if(fileInput) {
+// 3. Evento de Mudança no Input de Arquivo (Quando você escolhe a foto)
+if (fileInput) {
     fileInput.addEventListener('change', function(event) {
-        const file = event.target.files[0]; 
-        
+        const file = event.target.files[0];
+
         if (file) {
-            spanDetectedItem.innerText = "Analisando imagem com IA...";
+            // Mostra a área de resultados e limpa textos anteriores
+            areaResults.classList.remove('hidden');
+            spanDetectedItem.innerText = "Analisando imagem...";
             spanItemType.innerText = "...";
             spanEnergyYield.innerText = "0";
-            areaResults.classList.remove('hidden');
-            btnRecycleItem.style.display = 'none'; // Esconde botão até a IA responder
+            
+            // Esconde o botão de reciclar até a "IA" terminar
+            if (btnRecycleItem) btnRecycleItem.style.display = 'none';
 
-            // Ler a imagem e colocar na tela
+            // Lógica para ler e mostrar a imagem
             const reader = new FileReader();
             reader.onload = function(e) {
-                if(imgPreview) {
+                if (imgPreview) {
                     imgPreview.src = e.target.result;
-                    imgPreview.style.display = 'block'; 
+                    imgPreview.style.display = 'block'; // Garante que a imagem apareça
                 }
-            }
+            };
             reader.readAsDataURL(file);
 
-            // Simula o tempo de rede
+            // Simula o tempo de resposta da IA (2 segundos)
             setTimeout(() => {
-                simularApiClassificacao();
-            }, 2000); 
+                spanDetectedItem.innerText = "Lata de Alumínio";
+                spanItemType.innerText = "Reciclável";
+                energiaDesteItem = 5.5; 
+                spanEnergyYield.innerText = energiaDesteItem;
+                
+                // Mostra o botão de reciclar após a análise
+                if (btnRecycleItem) btnRecycleItem.style.display = 'flex';
+            }, 2000);
         }
     });
 }
 
-// ----------------------------------------------------
-
-// Clicar em Reciclar
-if(btnRecycleItem) {
+// 4. Lógica do Botão Reciclar (Encher a barra)
+if (btnRecycleItem) {
     btnRecycleItem.addEventListener('click', () => {
         totalEnergiaAcumulada += energiaDesteItem;
-        atualizarBarraEnergia();
-        areaResults.classList.add('hidden'); // Some com o resultado
         
-        // Limpa a imagem para o próximo uso
-        if(fileInput) fileInput.value = ""; 
-        if(imgPreview) imgPreview.style.display = 'none'; 
+        // Atualiza o texto do valor
+        if (spanEnergyValue) spanEnergyValue.innerText = totalEnergiaAcumulada.toFixed(1);
+        
+        // Calcula a porcentagem da barra
+        let porcentagem = (totalEnergiaAcumulada / MAX_ENERGIA_BARRA) * 100;
+        if (porcentagem > 100) porcentagem = 100;
+        
+        // Aplica na barra
+        if (energyBar) energyBar.style.width = porcentagem + "%";
+        
+        // Oculta os resultados e limpa o input para a próxima foto
+        areaResults.classList.add('hidden');
+        fileInput.value = ""; 
+        alert("Sucesso! Você gerou " + energiaDesteItem + " kWh!");
     });
 }
