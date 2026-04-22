@@ -4,15 +4,19 @@ import dev.langchain4j.model.chat.ChatModel;
 import dev.langchain4j.model.openai.OpenAiChatModel;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.beans.factory.annotation.Value;
 
 @Configuration
 public class ChatConfig {
 
+    @Value("${langchain4j.open-ai.chat-model.api-key}")
+    private String apiKey;
+
     @Bean
     public ChatModel chatModel() {
         return OpenAiChatModel.builder()
-                .apiKey("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")
-                .modelName("gpt-4o-mini") // ou outro modelo
+                .apiKey(apiKey)
+                .modelName("gpt-4o-mini")
                 .build();
     }
 }
