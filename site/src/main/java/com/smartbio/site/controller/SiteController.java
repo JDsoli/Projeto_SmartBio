@@ -21,7 +21,6 @@ public class SiteController {
         String respostaIA;
 
         try {
-            // Prompt otimizado
             respostaIA = chatModel.chat(
                 "Responda em português, com no máximo 100 palavras.\n" +
                 "Formato obrigatório:\n" +
