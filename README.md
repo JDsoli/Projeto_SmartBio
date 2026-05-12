@@ -42,23 +42,29 @@ Refatoração de Código Java: Tradução de lógica de negócio complexa para m
 
 ### Histórias de Usuário
 
-1. Como um operador do biodigestor, eu gostaria de consultar no site informações sobre diferentes tipos de resíduos orgânicos, para entender suas propriedades e nível de eficiência na produção de biogás.
+1. Como operador de biodigestor, eu gostaria de consultar em uma plataforma digital informações detalhadas sobre diferentes tipos de resíduos orgânicos, incluindo composição, potencial energético, restrições de uso e eficiência na geração de biogás, para tomar decisões mais seguras e eficientes sobre quais materiais utilizar no processo.
 
-2. Como um produtor rural, gostaria de saber quais os melhores resíduos para colocar no biodigestor, para conseguir máxima eficiência no que estou buscando.
+2. Como produtor rural, eu gostaria que o sistema me indicasse quais resíduos orgânicos são mais adequados para inserir no biodigestor com base nos resultados esperados, como maior produção de biogás, geração de biofertilizante ou estabilidade do sistema, para alcançar máxima eficiência na operação.
 
-3. Como produtora rural, eu gostaria de pesquisar diferentes tipos de resíduos agrícolas e animais em um sistema simples, para descobrir quais podem gerar biogás e melhorar o aproveitamento dos recursos da fazenda.
-   
-4. Como uma produtora rural, eu gostaria de verificar quais resíduos agrícolas e animais podem ser usados no biodigestor para produzir energia e reduzir o desperdício na propriedade.
-   
-5. Como gestora de uma propriedade rural, eu gostaria de consultar em uma plataforma digital quais resíduos orgânicos produzidos na fazenda podem ser utilizados na produção de biogás, para identificar oportunidades de transformar esses resíduos em energia e reduzir desperdícios.
-   
-6. José não é especialista em química ou biologia, por isso, ele tem medo de colocar o resíduo errado, como por exemplo: excesso de palha ou até mesmo material ácido, podendo até mesmo matar as bactérias do biodigestor, o que lhe causaria muitos problemas.
+3. Como produtora rural, eu gostaria de pesquisar e analisar diferentes resíduos agrícolas e animais em um sistema simples e intuitivo, com informações sobre viabilidade de uso, rendimento energético e cuidados necessários, para descobrir quais materiais podem ser melhor aproveitados na geração de biogás e reduzir desperdícios na propriedade.
 
-7. Ela acessa o dashboard via Web para analisar o histórico de classificação de resíduos e entender o porquê a produção de gás caiu em determinada semanas, usando os alertas de suporte à decisão para orientar os fazendeiros 
+4. Como produtora rural, eu gostaria de verificar não apenas quais resíduos podem ser utilizados individualmente no biodigestor, mas também quais combinações entre eles são recomendadas ou inadequadas, para produzir energia de forma mais eficiente e evitar problemas operacionais causados por misturas incorretas.
 
-8. Como um técnico agrícola, eu gostaria de receber recomendações automáticas no sistema sobre a proporção ideal de resíduos a serem inseridos no biodigestor, para garantir o equilíbrio do processo e maximizar a produção de biogás.
+5. Como gestora de uma propriedade rural, eu gostaria de consultar em uma plataforma digital todos os resíduos orgânicos gerados na fazenda e seu potencial para produção de biogás, com análises e recomendações de aproveitamento, para identificar oportunidades de transformar resíduos em energia, reduzir desperdícios e melhorar a sustentabilidade da propriedade.
 
-9. Como um operador iniciante de biodigestor, eu gostaria de visualizar alertas e avisos no sistema quando um resíduo inadequado for selecionado, para evitar erros que possam comprometer o funcionamento e a eficiência do biodigestor.
+6. Como usuário sem conhecimento técnico em química ou biologia, eu gostaria que o sistema me alertasse automaticamente quando eu selecionar resíduos inadequados ou em proporções que possam prejudicar o biodigestor, explicando os riscos envolvidos, para evitar danos às bactérias responsáveis pela digestão e prevenir falhas no processo.
+
+7. Como gestora ou analista responsável pela operação, eu gostaria de acessar um dashboard web com histórico de classificação de resíduos, dados de produção de biogás e alertas de suporte à decisão, para investigar quedas de desempenho ao longo das semanas e orientar ações corretivas junto aos produtores.
+
+8. Como técnico agrícola, eu gostaria de receber recomendações automáticas do sistema sobre a proporção ideal entre resíduos orgânicos a serem inseridos no biodigestor, considerando equilíbrio biológico e eficiência energética, para otimizar o processo e aumentar a produção de biogás com segurança.
+
+9. Como operador iniciante de biodigestor, eu gostaria de visualizar alertas, avisos e orientações sempre que um resíduo inadequado for selecionado ou uma combinação representar risco ao sistema, para evitar erros operacionais e aprender boas práticas durante o uso da plataforma.
+
+10. Como produtor rural, eu gostaria de comparar diferentes tipos de resíduos com base em critérios como potencial de geração de biogás, custo, disponibilidade e facilidade de manejo, para escolher as melhores opções para alimentar meu biodigestor de acordo com a realidade da propriedade.
+
+11. Como usuário do sistema, eu gostaria de receber sugestões automáticas para corrigir misturas inadequadas ou desequilíbrios identificados no biodigestor, com recomendações práticas de ajuste, para recuperar rapidamente a eficiência do processo e evitar perdas na produção.
+
+12. Como operador do biodigestor, eu gostaria de registrar e acompanhar resultados de testes realizados com diferentes resíduos e combinações ao longo do tempo, armazenando histórico de desempenho e produtividade, para identificar padrões e descobrir quais alternativas geram melhores resultados na minha operação.
 
 
 ### Link do figma
@@ -69,6 +75,10 @@ Refatoração de Código Java: Tradução de lógica de negócio complexa para m
 
 ### Link do video
 [Video](https://www.youtube.com/watch?v=pxV4aqGPmeE)
+
+### Link do video 2 
+[Video](https://youtu.be/aMJP5rgj2_o)
+
 ---
 
 ## Especificação Técnica

@@ -33,4 +33,5 @@ public class SiteController {
             return "Erro na IA: " + e.getMessage();
         }
     }
+
 }
