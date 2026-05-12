@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Parcerias | SmartBio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #3F8443;
+            --primary-dark: #0A3E2E;
+            --accent: #f59e0b;
+            --accent-dark: #d97706;
+            --text-main: #1f2937;
+            --text-light: #6b7280;
+            --bg-body: #f3f4f6;
+            --white: #ffffff;
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        * { 
+            margin: 0; 
+            padding: 0; 
+            box-sizing: border-box; 
+        }
+        
+        body { 
+            font-family: 'Inter', sans-serif; 
+            background-color: var(--bg-body); 
+            color: var(--text-main);
+            line-height: 1.6;
+            overflow-x: hidden;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        .hidden { 
+            display: none !important; 
+        }
+        
+        .navbar { 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+            padding: 0 5%; 
+            background: rgba(255, 255, 255, 0.87);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03); 
+            height: 90px; 
+            position: sticky; 
+            top: 0; 
+            z-index: 1000; 
+        }
+        
+        .logo-container { 
+            display: flex; 
+            align-items: center; 
+            gap: 15px; 
+            text-decoration: none; 
+            cursor: pointer; 
+        }
+
+        .logo-img { 
+            height: 50px; 
+        }
+
+        .logo-texto { 
+            font-size: 1.6rem; 
+            font-weight: 800; 
+            letter-spacing: -1px; 
+        }
+
+        .cor-smart { 
+            color: var(--primary); 
+        }
+
+        .cor-bio { 
+            color: var(--primary-dark); 
+        }
+        
+        .nav-links ul { 
+            display: flex; 
+            list-style: none; 
+            gap: 2.5rem; 
+        }
+
+        .nav-links a { 
+            text-decoration: none; 
+            color: var(--text-light); 
+            font-weight: 500; transition: var(--transition); 
+            cursor: pointer; 
+        }
+
+        .nav-links a:hover { 
+            color: var(--primary); 
+        }
+
+        .btn-primary { 
+            text-decoration: none; background: var(--primary); color: var(--white); 
+            padding: 1.2rem 2.8rem; border-radius: 50px; font-weight: 600; 
+            transition: var(--transition); cursor: pointer; border: none;
+            display: inline-flex; align-items: center; gap: 10px; font-size: 1.1rem;
+        }
+
+        .btn-primary:hover { 
+            background: var(--primary-dark); 
+            transform: translateY(-3px); 
+        }
+
+        /*Estrutura do container central*/
+        .container { 
+            max-width: 1100px; 
+            margin: 4rem auto; 
+            padding: 0 0rem; 
+        }
+        
+        .partner-card { 
+            display: flex; 
+            align-items: center; 
+            background: white; 
+            padding: 2.5rem; 
+            border-radius: 24px; 
+            margin-bottom: 2rem; 
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease; 
+            border-left: 8px solid var(--primary);
+        }
+
+        .partner-card:hover { 
+            transform: translateY(-5px); 
+        }
+        .partner-img { 
+            width: 180px; 
+            height: 180px; 
+            object-fit: contain; 
+            margin-right: 2.5rem; 
+            border-radius: 15px; 
+        }
+
+        .partner-info h2 { 
+            color: var(--primary-dark); 
+            margin-bottom: 1rem; 
+        }
+
+        .partner-info p { 
+            line-height: 1.8; 
+            color: #4b5563; 
+            text-align: justify; 
+        }
+        
+        .btn-back { 
+            display: inline-flex; 
+            align-items: center; 
+            gap: 8px; color: var(--primary); 
+            text-decoration: none; font-weight: 600; 
+            margin-bottom: 2rem; 
+        }
+    
+        .site-footer { 
+            background: #111; 
+            color: var(--white); 
+            padding: 5rem 5% 2rem; 
+            margin-top: auto; 
+        }
+        .footer-container { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); 
+            gap: 4rem; 
+        }
+        .footer-column a { 
+            color: #9ca3af; 
+            text-decoration: none; 
+            display: block; 
+            margin-bottom: 0.8rem; 
+        }
+        
+        @media (max-width: 768px) {
+            .nav-links, .nav-action { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="navbar">
+        <div class="logo-container" onclick="window.location.href='/'" style="cursor:pointer">
+            <div class="logo-texto"><span class="cor-smart">SMART</span><span class="cor-bio">BIO</span></div>
+        </div>
+        <nav class="nav-links">
+            <ul>
+                <li><a href="/" id="link-inicio">Início</a></li>
+                <li><a href="#docs-area">Documentação</a></li>
+                <li><a href="./parcerias.html">Parcerias</a></li>
+                <li><a href="./desenvolvedores.html">Desenvolvedores</a></li>
+                <li><a href="#">Contato</a></li>
+            </ul>
+        </nav>
+        <div class="nav-action">
+            <a class="btn-primary" id="btn-nav-classificar" style="padding: 0.7rem 1.5rem; font-size: 0.9rem;">Classificar Resíduo</a>
+        </div>
+    </header>
+
+    <main class="container">
+        <a href="/" class="btn-back"><i class="fas fa-arrow-left"></i> Voltar para o Início</a>
+        
+        <h1 style="font-size: 2.5rem; margin-bottom: 3rem; color: var(--primary-dark);">Nossos Parceiros Estratégicos</h1>
+
+        <div class="partner-card">
+            <img src="./assets/img/logo-cesar.png" alt="Logo CESAR" class="partner-img" onerror="this.src='https://via.placeholder.com/180?text=Logo+Parceiro'">
+            <div class="partner-info">
+                <h2>CESAR School</h2>
+                <p>O CESAR School é o braço educacional do CESAR, um dos maiores centros de inovação do Brasil. Nossa parceria foca no desenvolvimento técnico do ecossistema SmartBio, unindo a excelência acadêmica com a aplicação prática de tecnologias disruptivas em análise de sistemas e sustentabilidade rural.</p>
+            </div>
+        </div>
+
+        <div class="partner-card">
+            <img src="./assets/img/logo-outra.png" alt="Logo Parceiro" class="partner-img" onerror="this.src='https://via.placeholder.com/180?text=Logo+Parceiro'">
+            <div class="partner-info">
+                <h2>Instituição de Pesquisa Energética</h2>
+                <p>Colaboração técnica voltada para a validação dos cálculos de potencial de biogás e conformidade com as normas da ANEEL. Através desta parceria, garantimos que a inteligência da SmartBio esteja alinhada aos padrões globais de energia renovável.</p>
+            </div>
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <div class="footer-container">
+            <div class="footer-column">
+                <h2 style="color: var(--primary);">SmartBio</h2>
+                <a href="#">Sobre o Projeto</a>
+                <a href="#">ADS CESAR School</a>
+                <a href="#">Impacto Ambiental</a>
+            </div>
+            <div class="footer-column">
+                <h2 style="color: var(--primary);">Documentação</h2>
+                <a href="#">Hardware (C/C++)</a>
+                <a href="#">Manual do Biodigestor</a>
+                <a href="#">Monitoramento IA</a>
+            </div>
+            <div class="footer-column">
+                <h2 style="color: var(--primary);">Social</h2>
+                <div style="display: flex; gap: 1.5rem; font-size: 1.5rem;">
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                    <a href="https://github.com/JDsoli/Projeto_SmartBio"><i class="fab fa-github"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+        </div>
+        <p style="text-align: center; margin-top: 4rem; color: #555; font-size: 0.8rem; border-top: 1px solid #222; padding-top: 2rem;">
+            &copy; 2026 SmartBio - Projeto Acadêmico de Análise e Desenvolvimento de Sistemas.
+        </p>
+    </footer>
+</body>
+</html>

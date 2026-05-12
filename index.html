@@ -85,7 +85,11 @@
             transition: var(--transition); cursor: pointer; border: none;
             display: inline-flex; align-items: center; gap: 10px; font-size: 1.1rem;
         }
-        .btn-primary:hover { background: var(--primary-dark); transform: translateY(-3px); }
+
+        .btn-primary:hover { 
+            background: var(--primary-dark); 
+            transform: translateY(-3px); 
+        }
 
         .classification-section { 
             max-width: 1100px; margin: 4rem auto; 
@@ -93,7 +97,6 @@
             border-radius: 24px; box-shadow: 0 20px 40px rgba(0,0,0,0.08);
         }
 
-        /* --- NOVOS ESTILOS: BARRA DE ENERGIA --- */
         .classification-header {
             display: flex;
             justify-content: space-between;
@@ -169,14 +172,53 @@
             margin-top: 1rem;
         }
 
-        .docs-section { padding: 4rem 5%; background: #fdfdfd; border-top: 1px solid #eee; }
-        .docs-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; margin-top: 3rem; }
-        .doc-card { padding: 2.5rem; border-radius: 20px; background: var(--white); box-shadow: 0 10px 30px rgba(0,0,0,0.02); border-bottom: 5px solid var(--primary); }
-        .doc-card i { font-size: 2rem; color: var(--primary); margin-bottom: 1.5rem; display: block; }
+        .docs-section { 
+            padding: 4rem 5%; 
+            background: #fdfdfd; 
+            border-top: 1px solid #eee; 
+        }
+        
+        .docs-grid { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
+            gap: 2rem; 
+            margin-top: 3rem; 
+        }
+        
+        .doc-card { 
+            padding: 2.5rem; 
+            border-radius: 20px; 
+            background: var(--white); 
+            box-shadow: 0 10px 30px rgba(0,0,0,0.02); 
+            border-bottom: 5px solid var(--primary); 
+        }
 
-        .site-footer { background: #111; color: var(--white); padding: 5rem 5% 2rem; margin-top: auto; }
-        .footer-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 4rem; }
-        .footer-column a { color: #9ca3af; text-decoration: none; display: block; margin-bottom: 0.8rem; }
+        .doc-card i { 
+            font-size: 2rem; 
+            color: var(--primary); 
+            margin-bottom: 1.5rem; 
+            display: block; 
+        }
+
+        .site-footer { 
+            background: #111; 
+            color: var(--white); 
+            padding: 5rem 5% 2rem; 
+            margin-top: auto; 
+        }
+
+        .footer-container { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); 
+            gap: 4rem; 
+        }
+
+        .footer-column a { 
+            color: #9ca3af; 
+            text-decoration: none; 
+            display: block; 
+            margin-bottom: 0.8rem; 
+        }
 
         @media (max-width: 768px) {
             .nav-links, .nav-action { display: none; }
@@ -194,7 +236,8 @@
             <ul>
                 <li><a href="#" id="link-inicio">Início</a></li>
                 <li><a href="#docs-area">Documentação</a></li>
-                <li><a href="#">Tecnologia</a></li>
+                <li><a href="./html/parcerias.html">Parcerias</a></li>
+                <li><a href="#team-area">Desenvolvedores</a></li>
                 <li><a href="#">Contato</a></li>
             </ul>
         </nav>
