@@ -65,7 +65,8 @@ Refatoração de Código Java: Tradução de lógica de negócio complexa para m
 11. Como usuário do sistema, eu gostaria de receber sugestões automáticas para corrigir misturas inadequadas ou desequilíbrios identificados no biodigestor, com recomendações práticas de ajuste, para recuperar rapidamente a eficiência do processo e evitar perdas na produção.
 
 12. Como operador do biodigestor, eu gostaria de registrar e acompanhar resultados de testes realizados com diferentes resíduos e combinações ao longo do tempo, armazenando histórico de desempenho e produtividade, para identificar padrões e descobrir quais alternativas geram melhores resultados na minha operação.
-
+13. Como pesquisador iniciante sobre biodigestores, eu gostaria de acessar uma plataforma com informações claras sobre diferentes resíduos orgânicos e sua viabilidade no processo de biodigestão, para entender melhor quais materiais possuem potencial para geração de biogás e ampliar meu conhecimento sobre o tema.
+14. Como pessoa que acabou de conhecer a SmartBio, eu gostaria de visualizar no site informações sobre as parcerias da empresa e os resíduos analisados pela plataforma, para entender melhor sua atuação, credibilidade e como a solução contribui para o aproveitamento sustentável de resíduos orgânicos.
 
 ### Link do figma
 [Figma](https://www.figma.com/design/3QcQxHQlRTlwh2wgBwX7v5/Untitled?node-id=10-3&t=gbu9VXnAMuAt9yC7-1)
@@ -78,6 +79,9 @@ Refatoração de Código Java: Tradução de lógica de negócio complexa para m
 
 ### Link do video 2 
 [Video](https://youtu.be/aMJP5rgj2_o)
+
+### Link do video 3
+[Video]()
 
 ---
 
