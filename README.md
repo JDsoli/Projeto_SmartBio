@@ -41,7 +41,7 @@ Geração de Casos de Teste: Solicitação à IA para criar dados fictícios de 
 Refatoração de Código Java: Tradução de lógica de negócio complexa para métodos limpos no backend.
 
 ### Gerenciamento de Issues no GitHub
-![Registro de Issues](<img width="1420" height="447" alt="Captura de tela 2026-05-18 233854" src="https://github.com/user-attachments/assets/8adab44b-7f77-43e7-b5cc-d57a1e8dde38" />)
+![Registro de Issues]()
 
 ### Histórias de Usuário
 
