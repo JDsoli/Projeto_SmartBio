@@ -76,7 +76,7 @@ Refatoração de Código Java: Tradução de lógica de negócio complexa para m
 ---
 
 ### Link da documentação [entrega 4]
-[Documentação do Projeto](...)
+[Documentação do Projeto](https://docs.google.com/document/d/1Zkkc4iQzT8MpV5O2GFO1xpKwamlW0QLAH8rahbNo_H0/edit?usp=sharing)
 
 ### Link do video
 [Video](https://www.youtube.com/watch?v=pxV4aqGPmeE)
