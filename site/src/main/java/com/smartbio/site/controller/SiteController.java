@@ -18,7 +18,7 @@ public class SiteController {
         return "index";
     }
 
-    @CrossOrigin(origins = "*") // LIBERA O ACESSO DO LIVE SERVER
+    @CrossOrigin(origins = "*")
     @PostMapping("/resposta")
     @ResponseBody 
     public String resposta(@RequestParam("titulo") String titulo) {

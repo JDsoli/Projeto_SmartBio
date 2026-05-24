@@ -21,30 +21,24 @@ public class ChatController {
         return "chatBot";
     }
 
-    @CrossOrigin(origins = "*") // libera acesso externo
+    @CrossOrigin(origins = "*") // Isso permite que o seu arquivo local fale com o Java
     @PostMapping("/mensagem")
-    @ResponseBody 
+    @ResponseBody
     public String chat(@RequestParam("mensagem") String mensagem, HttpSession session) {
+        System.out.println("Mensagem recebida: " + mensagem); // LOG 1
         
         try {
-            List<String> historico = (List<String>) session.getAttribute("chat");
-            if(historico == null) {
-            historico = new ArrayList<>();
-            }
-            historico.add("Usuário: " + mensagem);
-            String contexto = String.join("\n", historico);
+            // ... sua lógica de histórico ...
             
-            String resposta = chatModel.chat(
-                "Responda em português, respondendo de forma coesa a mensagem a seguir: " + mensagem + "\nContexto: " + contexto
-            );
-            historico.add("IA: " + resposta);
+            System.out.println("Chamando o modelo de IA..."); // LOG 2
+            String resposta = chatModel.chat("Responda em português... " + mensagem);
+            System.out.println("IA respondeu: " + resposta); // LOG 3
 
-            session.setAttribute("chat", historico);
             return resposta;
-
         } catch (Exception e) {
+            System.err.println("ERRO NA IA: " + e.getMessage());
             e.printStackTrace();
-            return "Erro na IA: " + e.getMessage();
+            return "Erro técnico: " + e.getMessage();
         }
     }
 }

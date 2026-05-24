@@ -188,53 +188,34 @@ function adicionarMensagem(texto, tipo){
 }
 
 async function enviarMensagem(){
-
-    const mensagem =
-        input.value.trim();
-
+    const mensagem = input.value.trim();
     if(!mensagem) return;
 
-    adicionarMensagem(
-        mensagem,
-        'user'
-    );
-
+    adicionarMensagem(mensagem, 'user');
     input.value = '';
 
-    const formData =
-        new FormData();
+    // Mudança aqui: Usando URLSearchParams para simular um formulário padrão
+    const params = new URLSearchParams();
+    params.append('mensagem', mensagem);
 
-    formData.append(
-        'mensagem',
-        mensagem
-    );
+    try {
+        const response = await fetch('http://localhost:8080/mensagem', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded',
+            },
+            body: params
+        });
 
-    try{
-
-        const response =
-            await fetch('/mensagem', {
-                method:'POST',
-                body:formData
-            });
-
-        const resposta =
-            await response.text();
-
-        adicionarMensagem(
-            resposta,
-            'bot'
-        );
+        const resposta = await response.text();
+        adicionarMensagem(resposta, 'bot');
 
     } catch(error){
-
-        adicionarMensagem(
-            'Erro ao conectar com a IA.',
-            'bot'
-        );
-
+        adicionarMensagem('Erro ao conectar com a IA.', 'bot');
         console.error(error);
     }
 }
+
 botao.addEventListener(
     'click',
     enviarMensagem
