@@ -1,5 +1,3 @@
----
-
 ## Definição do Problema e Personas "IA-Augmented"
 
 O manejo de biodigestores é sensível; pequenas variações na mistura de resíduos podem interromper a produção de biogás ou danificar as colônias de bactérias. A oportunidade para IA aqui é a Predição de Eficiência e Otimização de Mistura.
