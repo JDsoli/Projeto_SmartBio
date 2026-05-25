@@ -54,6 +54,26 @@
             z-index: 1000; 
         }
 
+        .nav-actions-group {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+
+        .btn-nav {
+            padding: 0.6rem 1.2rem !important;
+            font-size: 0.85rem !important;
+            white-space: nowrap;
+        }
+
+        #btn-nav-classificar {
+            background: var(--accent);
+        }
+
+        #btn-nav-classificar:hover {
+            background: var(--accent-dark);
+        }
+
         .nav-links ul { 
             display: flex; 
             list-style: none; 
@@ -102,6 +122,24 @@
             padding: 0 2rem; 
         }
 
+        .logo-container { 
+            display: flex; 
+            align-items: center; 
+            gap: 15px; 
+            text-decoration: none; 
+            cursor: pointer; 
+        }
+
+        .logo-img { 
+            height: 50px; 
+        }
+
+        .logo-texto { 
+            font-size: 1.6rem; 
+            font-weight: 800; 
+            letter-spacing: -1px; 
+        }
+
         .btn-back { 
             display: inline-flex; 
             align-items: center; 
@@ -143,6 +181,7 @@
 
     <header class="navbar">
         <div class="logo-container" onclick="window.location.href='/'" style="cursor:pointer">
+            <img src="/site/src/main/resources/static/assets/img/logo-smartbio2.png" alt="SmartBio Logo" class="logo-img" onerror="this.src='https://via.placeholder.com/50?text=BIO'">
             <div class="logo-texto"><span class="cor-smart">SMART</span><span class="cor-bio">BIO</span></div>
         </div>
         <nav class="nav-links">
@@ -154,8 +193,13 @@
                 <li><a href="#">Contato</a></li>
             </ul>
         </nav>
-        <div class="nav-action">
-            <a class="btn-primary" id="btn-nav-classificar" style="padding: 0.7rem 1.5rem; font-size: 0.9rem;">Classificar Resíduo</a>
+        <div class="nav-actions-group">
+            <a class="btn-primary btn-nav" href="/site/src/main/resources/templates/chatBot.html">
+                <i class="fas fa-comments"></i> Chat
+            </a>
+            <a class="btn-primary btn-nav" id="btn-nav-classificar">
+                <i class="fas fa-leaf"></i> Classificar
+            </a>
         </div>
     </header>
 
@@ -167,10 +211,12 @@
 
         <div class="dev-grid">
             <div class="dev-card">
-                <div class="dev-avatar"><i class="fas fa-code"></i></div>
+                <div class="dev-avatar">
+                    <img src="/site/src/main/resources/static/assets/img/perfil_lucca.png" alt="Lucca Spinelli" style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;">
+                </div>
                 <h2>Lucca Spinelli</h2>
-                <span class="dev-role">Full Stack & AI Architect</span>
-                <p class="dev-bio">Responsável pela arquitetura do sistema em Java (Spring Boot), integração da API OpenAI e desenvolvimento da interface responsiva e interativa.</p>
+                <span class="dev-role">Lead Front-End Developer</span>
+                <p class="dev-bio">Especialista no desenvolvimento da interface do usuário (UI) e experiência (UX). Responsável pela arquitetura Front-End, garantindo um sistema responsivo, interativo e alinhado às necessidades estratégicas dos parceiros.</p>
                 <div style="display: flex; justify-content: center; gap: 1rem;">
                     <a href="https://github.com/JDsoli" style="color: #333;"><i class="fab fa-github"></i></a>
                     <a href="#" style="color: #0077b5;"><i class="fab fa-linkedin"></i></a>
@@ -178,49 +224,87 @@
             </div>
 
             <div class="dev-card">
-                <div class="dev-avatar"><i class="fas fa-database"></i></div>
-                <h2>João</h2>
-                <span class="dev-role">Data Engineer & Backend</span>
-                <p class="dev-bio">Focado na estruturação do banco de dados e lógica de persistência de dados energéticos coletados pelo sistema.</p>
-                <div style="display: flex; justify-content: center; gap: 1rem;"><a href="#" style="color: #0077b5;"><i class="fab fa-linkedin"></i></a></div>
+                <div class="dev-avatar">
+                    <img src="/site/src/main/resources/static/assets/img/perfil_joao.jpeg" alt="João Vinícius" style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;">
+                </div>
+                <h2>João Vinícius</h2>
+                <span class="dev-role">Back-End Engineer</span>
+                <p class="dev-bio">Responsável pela infraestrutura do servidor utilizando Spring Boot. Desenvolveu o núcleo de inteligência do ChatBot, integrando análise de resíduos e processamento de linguagem natural para suporte ao usuário.</p>
+                <div style="display: flex; justify-content: center; gap: 1rem;">
+                    <a href="#" style="color: #333;"><i class="fab fa-github"></i></a>
+                    <a href="#" style="color: #0077b5;"><i class="fab fa-linkedin"></i></a>
+                </div>
             </div>
 
             <div class="dev-card">
-                <div class="dev-avatar"><i class="fas fa-paint-brush"></i></div>
-                <h2>Julia</h2>
-                <span class="dev-role">UX/UI Designer</span>
-                <p class="dev-bio">Responsável pelo protótipo de alta fidelidade e pela experiência do usuário, garantindo uma navegação intuitiva e fluida.</p>
-                <div style="display: flex; justify-content: center; gap: 1rem;"><a href="#" style="color: #0077b5;"><i class="fab fa-linkedin"></i></a></div>
+                <div class="dev-avatar">
+                    <img src="/site/src/main/resources/static/assets/img/perfil_julia.png" alt="Júlia Veríssimo" style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;">
+                </div>
+                <h2>Júlia Veríssimo</h2>
+                <span class="dev-role">Visual Designer & Canvas Specialist</span>
+                <p class="dev-bio">Líder de Design Visual do projeto, responsável pela criação da identidade visual e modelagem do Canvas de negócio, garantindo uma comunicação clara e estratégica para as apresentações executivas.</p>
+                <div style="display: flex; justify-content: center; gap: 1rem;">
+                    <a href="#" style="color: #333;"><i class="fab fa-github"></i></a>
+                    <a href="#" style="color: #0077b5;"><i class="fab fa-linkedin"></i></a>
+                </div>
             </div>
 
             <div class="dev-card">
-                <div class="dev-avatar"><i class="fas fa-microchip"></i></div>
-                <h2>Nome do Integrante 4</h2>
-                <span class="dev-role">Responsavel por</span>
-                <p class="dev-bio">Desenvolvimento da integração entre os sensores ESP8266 e a plataforma web, cuidando da telemetria em tempo real.</p>
-                <div style="display: flex; justify-content: center; gap: 1rem;"><a href="#" style="color: #0077b5;"><i class="fab fa-linkedin"></i></a></div>
+                <div class="dev-avatar">
+                    <img src="/site/src/main/resources/static/assets/img/perfil_jardel.png" alt="Jardel Junior" style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;">
+                </div>
+                <h2>Jardel Junior</h2>
+                <span class="dev-role">Project Manager & UX Designer</span>
+                <p class="dev-bio">Líder do time e responsável pela gestão ágil de tarefas. Atuou na prototipagem de alta fidelidade via Figma e na estruturação da documentação técnica, assegurando a coesão entre o design e o desenvolvimento.</p>
+                <div style="display: flex; justify-content: center; gap: 1rem;">
+                    <a href="#" style="color: #333;"><i class="fab fa-github"></i></a>
+                    <a href="#" style="color: #0077b5;"><i class="fab fa-linkedin"></i></a>
+                </div>
             </div>
 
             <div class="dev-card">
-                <div class="dev-avatar"><i class="fas fa-file-alt"></i></div>
-                <h2>Nome do Integrante 5</h2>
-                <span class="dev-role">Responsavel por</span>
-                <p class="dev-bio">Coordenação do cronograma do projeto, revisão técnica da documentação e testes de garantia de qualidade do sistema.</p>
-                <div style="display: flex; justify-content: center; gap: 1rem;"><a href="#" style="color: #0077b5;"><i class="fab fa-linkedin"></i></a></div>
+                <div class="dev-avatar">
+                    <img src="/site/src/main/resources/static/assets/img/perfil_igor.jpeg" alt="Igor Kaua" style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;">
+                </div>
+                <h2>Igor Kaua</h2>
+                <span class="dev-role">Documentation & Team Support</span>
+                <p class="dev-bio">Responsável pela organização e escrita da documentação técnica do projeto, garantindo o suporte logístico ao time e a manutenção dos padrões de qualidade exigidos para os entregáveis acadêmicos.</p>
+                <div style="display: flex; justify-content: center; gap: 1rem;">
+                    <a href="#" style="color: #333;"><i class="fab fa-github"></i></a>
+                    <a href="#" style="color: #0077b5;"><i class="fab fa-linkedin"></i></a>
+                </div>
             </div>
         </div>
 
         <section class="project-history">
             <h2 style="color: var(--primary-dark); margin-bottom: 2rem;"><i class="fas fa-tasks"></i> Evolução do Projeto</h2>
+            
             <div class="timeline-item">
-                <strong>Pesquisa & Validação:</strong> O time identificou as dores dos produtores rurais e estudou as normativas da ANEEL para embasar o sistema.
+                <span>
+                    <strong>Pesquisa & Levantamento Inicial:</strong> 
+                    Proposta de um banco de dados para reunir análises de resíduos da SmartBio. A avaliação do material revelou dados predominantemente visuais, exigindo uma solução além do simples armazenamento.
+                </span>
+            </div>
+
+            <div class="timeline-item">
+                <span>
+                    <strong>Redefinição Estratégica:</strong> 
+                    Reformulação da proposta original para o desenvolvimento de uma Inteligência Artificial capaz de processar imagens e extrair dados específicos para a análise de resíduos orgânicos.
+                </span>
             </div>
             <div class="timeline-item">
-                <strong>Prototipagem:</strong> Desenvolvimento da identidade visual "SmartBio" e dos fluxos de classificação de resíduos via IA.
+                <span>
+                    <strong>Desenvolvimento da Plataforma:</strong> 
+                    Criação da interface visual focada em usabilidade e organização, adequando a plataforma aos requisitos funcionais e facilitando a interação entre homem e máquina.
+                </span>
             </div>
             <div class="timeline-item">
-                <strong>Implementação Técnica:</strong> Codificação em Java, superação de desafios de segurança (CORS) e integração da inteligência generativa.
+                <span>
+                    <strong>Expansão de Funcionalidades:</strong> 
+                    Implementação de área dedicada às parcerias institucionais (PROCRIU, CESAR.), ampliando o valor social do sistema e conectando a tecnologia com comunidades reais.
+                </span>
             </div>
+
         </section>
     </main>
 

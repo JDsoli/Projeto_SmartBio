@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Parcerias | SmartBio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #3F8443;
+            --primary-dark: #0A3E2E;
+            --accent: #f59e0b;
+            --accent-dark: #d97706;
+            --text-main: #1f2937;
+            --text-light: #6b7280;
+            --bg-body: #f3f4f6;
+            --white: #ffffff;
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        * { 
+            margin: 0; 
+            padding: 0; 
+            box-sizing: border-box; 
+        }
+        
+        body { 
+            font-family: 'Inter', sans-serif; 
+            background-color: var(--bg-body); 
+            color: var(--text-main);
+            line-height: 1.6;
+            overflow-x: hidden;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        .hidden { 
+            display: none !important; 
+        }
+        
+        .navbar { 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+            padding: 0 5%; 
+            background: rgba(255, 255, 255, 0.87);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03); 
+            height: 90px; 
+            position: sticky; 
+            top: 0; 
+            z-index: 1000; 
+        }
+
+        .nav-actions-group {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+
+        .btn-nav {
+            padding: 0.6rem 1.2rem !important;
+            font-size: 0.85rem !important;
+            white-space: nowrap;
+        }
+
+        #btn-nav-classificar {
+            background: var(--accent);
+        }
+
+        #btn-nav-classificar:hover {
+            background: var(--accent-dark);
+        }
+        
+        .logo-container { 
+            display: flex; 
+            align-items: center; 
+            gap: 15px; 
+            text-decoration: none; 
+            cursor: pointer; 
+        }
+
+        .logo-img { 
+            height: 50px; 
+        }
+
+        .logo-texto { 
+            font-size: 1.6rem; 
+            font-weight: 800; 
+            letter-spacing: -1px; 
+        }
+
+        .cor-smart { 
+            color: var(--primary); 
+        }
+
+        .cor-bio { 
+            color: var(--primary-dark); 
+        }
+        
+        .nav-links ul { 
+            display: flex; 
+            list-style: none; 
+            gap: 2.5rem; 
+        }
+
+        .nav-links a { 
+            text-decoration: none; 
+            color: var(--text-light); 
+            font-weight: 500; transition: var(--transition); 
+            cursor: pointer; 
+        }
+
+        .nav-links a:hover { 
+            color: var(--primary); 
+        }
+
+        .btn-instagram {
+            background: #333 !important; /* Cor padrão */
+            transition: all 0.4s ease !important;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .btn-instagram:hover {
+            background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%) !important;
+            transform: scale(1.05);
+            box-shadow: 0 4px 15px rgba(214, 36, 159, 0.4);
+        }
+
+        .btn-wixsite {
+            background: #3F8443 !important;
+            transition: all 0.4s ease !important;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .btn-wixsite:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 15px rgba(3, 133, 1, 0.4);
+        }
+
+
+        .btn-primary { 
+            text-decoration: none; background: var(--primary); color: var(--white); 
+            padding: 1.2rem 2.8rem; border-radius: 50px; font-weight: 600; 
+            transition: var(--transition); cursor: pointer; border: none;
+            display: inline-flex; align-items: center; gap: 10px; font-size: 1.1rem;
+        }
+
+        .btn-primary:hover { 
+            background: var(--primary-dark); 
+            transform: translateY(-3px); 
+        }
+
+        /*Estrutura do container central*/
+        .container { 
+            max-width: 1100px; 
+            margin: 4rem auto; 
+            padding: 0 0rem; 
+        }
+        
+        .partner-card { 
+            display: flex; 
+            align-items: center; 
+            background: white; 
+            padding: 2.5rem; 
+            border-radius: 24px; 
+            margin-bottom: 2rem; 
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease; 
+            border-left: 8px solid var(--primary);
+        }
+
+        .partner-card:hover { 
+            transform: translateY(-5px); 
+        }
+        .partner-img { 
+            width: 180px; 
+            height: 180px; 
+            object-fit: contain; 
+            margin-right: 2.5rem; 
+            border-radius: 15px; 
+        }
+
+        .partner-info h2 { 
+            color: var(--primary-dark); 
+            margin-bottom: 1rem; 
+        }
+
+        .partner-info p { 
+            line-height: 1.8; 
+            color: #4b5563; 
+            text-align: justify; 
+        }
+        
+        .btn-back { 
+            display: inline-flex; 
+            align-items: center; 
+            gap: 8px; color: var(--primary); 
+            text-decoration: none; font-weight: 600; 
+            margin-bottom: 2rem; 
+        }
+    
+        .site-footer { 
+            background: #111; 
+            color: var(--white); 
+            padding: 5rem 5% 2rem; 
+            margin-top: auto; 
+        }
+        .footer-container { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); 
+            gap: 4rem; 
+        }
+        .footer-column a { 
+            color: #9ca3af; 
+            text-decoration: none; 
+            display: block; 
+            margin-bottom: 0.8rem; 
+        }
+        
+        @media (max-width: 768px) {
+            .nav-links, .nav-action { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="navbar">
+        <div class="logo-container" onclick="window.location.href='/'" style="cursor:pointer">
+            <img src="/site/src/main/resources/static/assets/img/logo-smartbio2.png" alt="SmartBio Logo" class="logo-img" onerror="this.src='https://via.placeholder.com/50?text=BIO'">
+            <div class="logo-texto"><span class="cor-smart">SMART</span><span class="cor-bio">BIO</span></div>
+        </div>
+        <nav class="nav-links">
+            <ul>
+                <li><a href="/" id="link-inicio">Início</a></li>
+                <li><a href="#docs-area">Documentação</a></li>
+                <li><a href="/site/src/main/resources/static/html/parcerias.html">Parcerias</a></li>
+                <li><a href="/site/src/main/resources/static/html/desenvolvedores.html">Desenvolvedores</a></li>
+                <li><a href="#">Contato</a></li>
+            </ul>
+        </nav>
+        <div class="nav-actions-group">
+            <a class="btn-primary btn-nav" href="/site/src/main/resources/templates/chatBot.html">
+                <i class="fas fa-comments"></i> Chat
+            </a>
+            <a class="btn-primary btn-nav" id="btn-nav-classificar">
+                <i class="fas fa-leaf"></i> Classificar
+            </a>
+        </div>
+    </header>
+
+    <main class="container">
+        <a href="/" class="btn-back"><i class="fas fa-arrow-left"></i> Voltar para o Início</a>
+
+        <section id="doc-procriu" style="background: white; padding: 4rem; border-radius: 24px; margin-top: 4rem; box-shadow: 0 10px 30px rgba(0,0,0,0.05); color: #374151;">
+    
+            <div style="border-bottom: 2px solid var(--primary); margin-bottom: 30px; display: flex; justify-content: space-between; align-items: flex-end;">
+                <h2 style="color: var(--primary-dark); font-size: 2rem; margin-bottom: 10px;">Documentação: Projeto PROCRIU & Ilha de Deus</h2>
+                <span style="color: var(--text-light); font-size: 0.85rem; margin-bottom: 10px;">Última atualização: Maio de 2026</span>
+            </div>
+
+            <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 40px;">
+                
+                <div>
+                    <p style="font-size: 1.1rem; margin-bottom: 20px;">
+                        O <strong>Programa Criança Urgente (PROCRIU)</strong> é uma das organizações sociais mais emblemáticas do Recife, atuando como um catalisador de dignidade na comunidade da <strong>Ilha de Deus</strong>. Mais do que um centro de apoio, o PROCRIU gerencia o <em>Centro de Referência Pela Vida (CRV)</em>, onde a educação e a ecologia se fundem para criar soluções locais.
+                    </p>
+
+                    <h3 style="color: var(--primary); margin: 25px 0 15px 0; display: flex; align-items: center; gap: 10px;">
+                        <i class="fas fa-history"></i> Contexto Histórico e Social
+                    </h3>
+                    <p>
+                        A Ilha de Deus é uma comunidade centenária de pescadores e catadores de moluscos. Historicamente negligenciada pelo poder público, a comunidade transformou a autogestão em sobrevivência. O PROCRIU surge nesse cenário não apenas para oferecer assistência, mas para formalizar a <strong>Pedagogia do Afeto</strong>, método que utiliza o acolhimento como base para o aprendizado técnico e cidadão.
+                    </p>
+
+                    <h3 style="color: var(--primary); margin: 25px 0 15px 0; display: flex; align-items: center; gap: 10px;">
+                        <i class="fas fa-leaf"></i> Desafios Ambientais e Economia do Sururu
+                    </h3>
+                    <p>
+                        O principal desafio ambiental da região é o descarte das cascas de sururu e resíduos da pesca artesanal. Atualmente, toneladas de resíduos orgânicos são geradas mensalmente. A parceria com o <strong>SmartBio</strong> visa mitigar esse impacto através de:
+                    </p>
+                    <ul style="margin-left: 20px; margin-top: 10px; line-height: 2;">
+                        <li><strong>Bioconversão:</strong> Transformação de restos de alimentos da cozinha comunitária em biogás.</li>
+                        <li><strong>Saneamento Ecológico:</strong> Redução da carga orgânica lançada diretamente nos canais de mangue.</li>
+                        <li><strong>Educação Circular:</strong> Oficinas práticas para jovens sobre energia renovável e monitoramento IoT.</li>
+                    </ul>
+
+                    <div style="margin-top: 30px; display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+                        <div style="text-align: center;">
+                            <div style="overflow: hidden; border-radius: 12px; height: 200px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
+                                <img src="/site/src/main/resources/static/assets/img/procriu_festival.png" alt="Comunidade Ilha de Deus" 
+                                    style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.3s;"
+                                    onmouseover="this.style.transform='scale(1.05)'" 
+                                    onmouseout="this.style.transform='scale(1)'">
+                            </div>
+                            <p style="font-size: 0.75rem; color: var(--text-light); margin-top: 8px; font-style: italic;">
+                                Ilha de Deus: Ecossistema de manguezal e território de inovação social.
+                            </p>
+                        </div>
+
+                        <div style="text-align: center;">
+                            <div style="overflow: hidden; border-radius: 12px; height: 200px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
+                                <img src="/site/src/main/resources/static/assets/img/procriu_criancas.png" alt="Oficina PROCRIU" 
+                                    style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.3s;"
+                                    onmouseover="this.style.transform='scale(1.05)'" 
+                                    onmouseout="this.style.transform='scale(1)'">
+                            </div>
+                            <p style="font-size: 0.75rem; color: var(--text-light); margin-top: 8px; font-style: italic;">
+                                Impacto Social: Pedagogia do Afeto aplicada à sustentabilidade.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <aside>
+                    <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 16px; padding: 25px; position: sticky; top: 110px;">
+                       <div style="text-align: center; margin-bottom: 20px;">
+                            <div style="width: 120px; height: 120px; margin: 0 auto; background: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; border: 4px solid #fff; box-shadow: 0 4px 10px rgba(0,0,0,0.08); overflow: hidden;">
+                                <img src="/site/src/main/resources/static/assets/img/procriou.jpg" 
+                                    alt="Logo PROCRIU" 
+                                    style="width: 80%; height: auto; object-fit: contain;">
+                            </div>
+                            <h4 style="margin-top: 15px; color: var(--primary-dark); letter-spacing: 1px;">CENTRO DE REFERÊNCIA</h4>
+                            <p style="font-size: 0.7rem; color: var(--primary); font-weight: 800; margin-top: -5px;">PELA VIDA (CRV)</p>
+                        </div>
+                        
+                        <div style="font-size: 0.9rem;">
+                            <div style="display: flex; justify-content: space-between; padding: 10px 0; border-bottom: 1px solid #e2e8f0;">
+                                <span style="font-weight: 600;">Tipo:</span>
+                                <span>ONG / OSC</span>
+                            </div>
+                            <div style="display: flex; justify-content: space-between; padding: 10px 0; border-bottom: 1px solid #e2e8f0;">
+                                <span style="font-weight: 600;">Território:</span>
+                                <span>Ilha de Deus (ZPA-1)</span>
+                            </div>
+                            <div style="display: flex; justify-content: space-between; padding: 10px 0; border-bottom: 1px solid #e2e8f0;">
+                                <span style="font-weight: 600;">Público:</span>
+                                <span>Crianças e Famílias</span>
+                            </div>
+                            <div style="display: flex; justify-content: space-between; padding: 10px 0; border-bottom: 1px solid #e2e8f0;">
+                                <span style="font-weight: 600;">ODS Relacionadas:</span>
+                                <span style="color: #d97706;">1, 4, 7, 11</span>
+                            </div>
+                        </div>
+
+                        <div style="margin-top: 25px;">
+                            <h5 style="font-size: 0.8rem; text-transform: uppercase; color: #94a3b8; margin-bottom: 10px;">Links Oficiais</h5>
+                            <div style="display: flex; gap: 10px;">
+                                <a href="https://www.instagram.com/procriu/" 
+                                    target="_blank" 
+                                    class="btn-instagram" 
+                                    style="flex: 1; text-align: center; color: white; padding: 12px; border-radius: 8px; text-decoration: none;">
+                                    <i class="fab fa-instagram" style="font-size: 1.2rem;"></i>
+                                </a>
+                                <a href="https://crvvida.wixsite.com/procriu"
+                                    target="_blank"
+                                    class="btn-wixsite"
+                                    style="flex: 1; text-align: center; color: white; padding: 12px; border-radius: 8px; text-decoration: none;">
+                                    <i class="fas fa-globe" style="font-size: 1.2rem;"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </aside>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="footer-container">
+            <div class="footer-column">
+                <h2 style="color: var(--primary);">SmartBio</h2>
+                <a href="#">Sobre o Projeto</a>
+                <a href="#">ADS CESAR School</a>
+                <a href="#">Impacto Ambiental</a>
+            </div>
+            <div class="footer-column">
+                <h2 style="color: var(--primary);">Documentação</h2>
+                <a href="#">Hardware (C/C++)</a>
+                <a href="#">Manual do Biodigestor</a>
+                <a href="#">Monitoramento IA</a>
+            </div>
+            <div class="footer-column">
+                <h2 style="color: var(--primary);">Social</h2>
+                <div style="display: flex; gap: 1.5rem; font-size: 1.5rem;">
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                    <a href="https://github.com/JDsoli/Projeto_SmartBio"><i class="fab fa-github"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+        </div>
+        <p style="text-align: center; margin-top: 4rem; color: #555; font-size: 0.8rem; border-top: 1px solid #222; padding-top: 2rem;">
+            &copy; 2026 SmartBio - Projeto Acadêmico de Análise e Desenvolvimento de Sistemas.
+        </p>
+    </footer>
+</body>
+</html>

@@ -53,26 +53,6 @@
             top: 0; 
             z-index: 1000; 
         }
-
-        .nav-actions-group {
-            display: flex;
-            gap: 10px;
-            align-items: center;
-        }
-
-        .btn-nav {
-            padding: 0.6rem 1.2rem !important;
-            font-size: 0.85rem !important;
-            white-space: nowrap;
-        }
-
-        #btn-nav-classificar {
-            background: var(--accent);
-        }
-
-        #btn-nav-classificar:hover {
-            background: var(--accent-dark);
-        }
         
         .logo-container { 
             display: flex; 
@@ -205,7 +185,6 @@
 
     <header class="navbar">
         <div class="logo-container" onclick="window.location.href='/'" style="cursor:pointer">
-            <img src="/site/src/main/resources/static/assets/img/logo-smartbio2.png" alt="SmartBio Logo" class="logo-img" onerror="this.src='https://via.placeholder.com/50?text=BIO'">
             <div class="logo-texto"><span class="cor-smart">SMART</span><span class="cor-bio">BIO</span></div>
         </div>
         <nav class="nav-links">
@@ -217,13 +196,11 @@
                 <li><a href="#">Contato</a></li>
             </ul>
         </nav>
-        <div class="nav-actions-group">
-            <a class="btn-primary btn-nav" href="/site/src/main/resources/templates/chatBot.html">
-                <i class="fas fa-comments"></i> Chat
-            </a>
-            <a class="btn-primary btn-nav" id="btn-nav-classificar">
-                <i class="fas fa-leaf"></i> Classificar
-            </a>
+        <div class="nav-action">
+            <a class="btn-primary" style="padding: 0.7rem 1.5rem; font-size: 0.9rem;" href="./site/src/main/resources/templates/chatBot.html">Experimente o chat</a>
+        </div>
+        <div class="nav-action">
+            <a class="btn-primary" id="btn-nav-classificar" style="padding: 0.7rem 1.5rem; font-size: 0.9rem;">Classificar Resíduo</a>
         </div>
     </header>
 
@@ -232,73 +209,11 @@
 
         <h1 style="font-size: 2.5rem; margin-bottom: 3rem; color: var(--primary-dark);">Nossos Parceiros Destaques</h1>
         
-        <a href="./parceiros destaque/procriou.html" style="text-decoration: none; color: inherit;">
-            <div class="partner-card">
-                <img src="/site/src/main/resources/static/assets/img/procriou.jpg" alt="Logo CESAR" class="partner-img" onerror="this.src='https://via.placeholder.com/180?text=Logo+Parceiro'">
-                <div class="partner-info">
-                    <h2>PROCRIU - Centro de Referência Pela Vida</h2>
-                    <p>
-                        O <strong>PROCRIU</strong> (Programa Criança Urgente) é uma organização social sem fins lucrativos fundamentada na <strong>Pedagogia do Afeto</strong> e na Economia Solidária. Com sede na Ilha de Deus, Recife, a instituição atua há décadas no fortalecimento de vínculos comunitários, oferecendo educação integral, apoio psicossocial e fomento ao empreendedorismo local para crianças, jovens e suas famílias.
-                    </p>
-                </div>
-            </div>
-        </a>
-
-        <a href="./parceiros destaque/procriou.html" style="text-decoration: none; color: inherit;">
-            <div class="partner-card">
-                <img src="/site/src/main/resources/static/assets/img/procriou.jpg" alt="Logo CESAR" class="partner-img" onerror="this.src='https://via.placeholder.com/180?text=Logo+Parceiro'">
-                <div class="partner-info">
-                    <h2>PROCRIU - Centro de Referência Pela Vida</h2>
-                    <p>
-                        O <strong>PROCRIU</strong> (Programa Criança Urgente) é uma organização social sem fins lucrativos fundamentada na <strong>Pedagogia do Afeto</strong> e na Economia Solidária. Com sede na Ilha de Deus, Recife, a instituição atua há décadas no fortalecimento de vínculos comunitários, oferecendo educação integral, apoio psicossocial e fomento ao empreendedorismo local para crianças, jovens e suas famílias.
-                    </p>
-                </div>
-            </div>
-        </a>
-
-        <a href="./parceiros destaque/procriou.html" style="text-decoration: none; color: inherit;">
-            <div class="partner-card">
-                <img src="/site/src/main/resources/static/assets/img/procriou.jpg" alt="Logo CESAR" class="partner-img" onerror="this.src='https://via.placeholder.com/180?text=Logo+Parceiro'">
-                <div class="partner-info">
-                    <h2>PROCRIU - Centro de Referência Pela Vida</h2>
-                    <p>
-                        O <strong>PROCRIU</strong> (Programa Criança Urgente) é uma organização social sem fins lucrativos fundamentada na <strong>Pedagogia do Afeto</strong> e na Economia Solidária. Com sede na Ilha de Deus, Recife, a instituição atua há décadas no fortalecimento de vínculos comunitários, oferecendo educação integral, apoio psicossocial e fomento ao empreendedorismo local para crianças, jovens e suas famílias.
-                    </p>
-                </div>
-            </div>
-        </a>
-
-        <h1 style="font-size: 2.5rem; margin-bottom: 3rem; color: var(--primary-dark);">Nossos Parceiros Estratégicos</h1>
-
         <div class="partner-card">
             <img src="/site/src/main/resources/static/assets/img/CesarSchool-Logo.png" alt="Logo CESAR" class="partner-img" onerror="this.src='https://via.placeholder.com/180?text=Logo+Parceiro'">
             <div class="partner-info">
                 <h2>CESAR School</h2>
                 <p>O CESAR School é o braço educacional do CESAR, um dos maiores centros de inovação do Brasil. Nossa parceria foca no desenvolvimento técnico do ecossistema SmartBio, unindo a excelência acadêmica com a aplicação prática de tecnologias disruptivas em análise de sistemas e sustentabilidade rural.</p>
-            </div>
-        </div>
-
-        <div class="partner-card">
-            <img src="./assets/img/logo-outra.png" alt="Logo Parceiro" class="partner-img" onerror="this.src='https://via.placeholder.com/180?text=Logo+Parceiro'">
-            <div class="partner-info">
-                <h2>Parceiro 1</h2>
-                <p>Colaboração técnica voltada para a validação dos cálculos de potencial de biogás e conformidade com as normas da ANEEL. Através desta parceria, garantimos que a inteligência da SmartBio esteja alinhada aos padrões globais de energia renovável.</p>
-            </div>
-        </div>
-
-        <div class="partner-card">
-            <img src="./assets/img/logo-outra.png" alt="Logo Parceiro" class="partner-img" onerror="this.src='https://via.placeholder.com/180?text=Logo+Parceiro'">
-            <div class="partner-info">
-                <h2>Parceiro 2</h2>
-                <p>Colaboração técnica voltada para a validação dos cálculos de potencial de biogás e conformidade com as normas da ANEEL. Através desta parceria, garantimos que a inteligência da SmartBio esteja alinhada aos padrões globais de energia renovável.</p>
-            </div>
-        </div>
-
-        <div class="partner-card">
-            <img src="./assets/img/logo-outra.png" alt="Logo Parceiro" class="partner-img" onerror="this.src='https://via.placeholder.com/180?text=Logo+Parceiro'">
-            <div class="partner-info">
-                <h2>Parceiro 3</h2>
-                <p>Colaboração técnica voltada para a validação dos cálculos de potencial de biogás e conformidade com as normas da ANEEL. Através desta parceria, garantimos que a inteligência da SmartBio esteja alinhada aos padrões globais de energia renovável.</p>
             </div>
         </div>
     </main>
