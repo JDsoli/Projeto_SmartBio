@@ -1,4 +1,4 @@
-# Projeto SmartBio
+<img width="297" height="268" alt="image" src="https://github.com/user-attachments/assets/2bb93d3d-f0f7-43bd-a9c3-c6efd28351be" /># Projeto SmartBio
 
 ---
 
@@ -86,6 +86,9 @@ Refatoração de Código Java: Tradução de lógica de negócio complexa para m
 
 ### Link do video 3 [entrega 4]
 [Video](https://youtu.be/_F_3Upz_0Gk)
+
+### Link do video 4
+[Video]([https://youtu.be/_F_3Upz_0Gk](https://youtu.be/G2dnLGEny9M?si=GnMIYtAl5-F-O1Uh))
 
 
 ---
