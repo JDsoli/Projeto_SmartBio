@@ -1,5 +1,3 @@
-<img width="297" height="268" alt="image" src="https://github.com/user-attachments/assets/2bb93d3d-f0f7-43bd-a9c3-c6efd28351be" /># Projeto SmartBio
-
 ---
 
 ## Definição do Problema e Personas "IA-Augmented"
