@@ -84,7 +84,7 @@ Refatoração de Código Java: Tradução de lógica de negócio complexa para m
 [Video](https://youtu.be/_F_3Upz_0Gk)
 
 ### Link do video 4
-[Video]([https://youtu.be/_F_3Upz_0Gk](https://youtu.be/G2dnLGEny9M?si=GnMIYtAl5-F-O1Uh))
+[Video](https://youtu.be/G2dnLGEny9M?si=GnMIYtAl5-F-O1Uh)
 
 
 ---
