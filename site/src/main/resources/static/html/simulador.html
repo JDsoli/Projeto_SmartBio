@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    
+    <title>Simulador | SmartBio</title>
+
+    <style>
+        /* 1. Variáveis Globais e Reset */
+        :root {
+            --primary: #3F8443;
+            --primary-dark: #0A3E2E;
+            --accent: #f59e0b;
+            --accent-dark: #d97706;
+            --text-main: #1f2937;
+            --text-light: #6b7280;
+            --bg-body: #f3f4f6;
+            --white: #ffffff;
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html, body { width: 100%; overflow-x: hidden; }
+        
+        body { 
+            font-family: 'Inter', sans-serif; 
+            background-color: var(--bg-body); 
+            color: var(--text-main); 
+            line-height: 1.6; 
+        }
+
+        .hidden { display: none !important; }
+
+        /* 2. Botões Padronizados */
+        .btn-primary { 
+            text-decoration: none; background: var(--primary); color: var(--white); 
+            padding: 1.2rem 2.8rem; border-radius: 50px; font-weight: 600; 
+            transition: var(--transition); cursor: pointer; border: none;
+            display: inline-flex; align-items: center; gap: 10px; font-size: 1.1rem;
+        }
+        .btn-primary:hover { background: var(--primary-dark); transform: translateY(-3px); }
+        
+        .btn-back { transition: var(--transition); }
+        .btn-back:hover { color: var(--primary-dark); transform: translateX(-5px); }
+
+        /* 3. Estrutura Principal do Simulador */
+        .classification-section { 
+            max-width: 1100px; 
+            margin: 2rem auto 4rem; 
+            padding: 3rem; background: var(--white);
+            border-radius: 24px; box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+        }
+
+        /* 4. Cabeçalho e Barra de Progresso (Desktop) */
+        .classification-header { 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+            margin-bottom: 2rem; 
+            gap: 1.5rem; 
+        }
+
+        .energy-progress-container {
+            width: 100%;
+            max-width: 400px; /* Trava perfeita para o PC */
+            height: 38px; 
+            border-radius: 20px; 
+            position: relative; 
+            overflow: hidden; 
+            border: 2px solid #cbd5e1;
+            background: #e2e8f0;
+        }
+
+        #energy-bar-fill { 
+            width: 0%; height: 100%; background: linear-gradient(90deg, var(--primary), #82ca9d); 
+            transition: width 0.8s cubic-bezier(0.4, 0, 0.2, 1); 
+        }
+
+        .energy-bar-text { 
+            position: absolute; width: 100%; text-align: center; 
+            line-height: 34px; 
+            font-weight: 800; font-size: 0.95rem; 
+            color: var(--primary-dark); z-index: 5; 
+        }
+
+        /* 5. ÁREA DE CHAT (ESTILO GEMINI) */
+        .chat-input-wrapper {
+            width: 100%; max-width: 800px; margin: 0 auto 2rem auto;
+            display: flex; flex-direction: column; gap: 10px;
+        }
+
+        .chat-input-container {
+            display: flex; align-items: center; background-color: #1e1e1e;
+            border-radius: 50px; padding: 0.5rem 1rem;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1); transition: var(--transition);
+        }
+
+        .chat-input-container:focus-within {
+            box-shadow: 0 4px 20px rgba(63, 132, 67, 0.3); background-color: #252525;
+        }
+
+        #user-prompt {
+            flex: 1; background: transparent; border: none; color: #ffffff;
+            font-size: 1.1rem; padding: 10px 15px; font-family: 'Inter', sans-serif; outline: none;
+        }
+
+        #user-prompt::placeholder { color: #888888; }
+
+        .btn-icon {
+            background: transparent; border: none; color: #a0a0a0; font-size: 1.2rem;
+            cursor: pointer; width: 40px; height: 40px; border-radius: 50%;
+            display: flex; align-items: center; justify-content: center; transition: var(--transition);
+        }
+
+        .btn-icon:hover { background-color: rgba(255, 255, 255, 0.1); color: #ffffff; }
+        .btn-send { color: var(--primary); }
+        .btn-send:hover { background-color: var(--primary); color: white; }
+
+        #attachment-preview {
+            display: inline-flex; align-items: center; gap: 10px; background: #e2e8f0;
+            padding: 6px 12px; border-radius: 20px; font-size: 0.85rem; color: #1f2937;
+            width: max-content; margin-left: 1rem;
+        }
+
+        #btn-remove-attachment { background: none; border: none; color: #ef4444; cursor: pointer; }
+
+        /* 6. Feedback e Resultados */
+        #image-preview { 
+            max-width: 100%; max-height: 300px; border-radius: 15px; margin: 20px auto; box-shadow: 0 4px 12px rgba(0,0,0,0.1); display: block;
+        }
+        .energy-display-info { 
+            background: #f8fafc; padding: 2rem; border-radius: 15px; border-left: 6px solid var(--primary); margin-bottom: 2rem; 
+        }
+        .ia-feedback-box { 
+            background: #fffbeb; border: 1px solid #fef3c7; padding: 1.5rem; border-radius: 12px; 
+            margin-top: 1.5rem; font-size: 0.95rem; color: #92400e; line-height: 1.5; 
+        }
+        .usage-select { 
+            width: 100%; padding: 1rem; border-radius: 10px; border: 1px solid #cbd5e1; 
+            font-family: 'Inter', sans-serif; font-size: 1rem; margin-top: 1rem; transition: var(--transition);
+        }
+        .usage-select:focus { outline: none; border-color: var(--primary); box-shadow: 0 0 0 3px rgba(63, 132, 67, 0.2); }
+
+        /* 7. Responsividade do Celular (A CORREÇÃO DEFINITIVA) */
+        @media (max-width: 992px) {
+            .classification-section { 
+                padding: 1.5rem; 
+                margin: 1rem; 
+                border-radius: 16px; 
+            }
+
+            .classification-header { 
+                display: block; /* MÁGICA: Desliga o flexbox para parar de amassar a barra */
+                text-align: center;
+            }
+
+            .classification-header h2 { 
+                font-size: 1.8rem !important; 
+                margin-bottom: 1.5rem; /* Dá espaço entre o título e a barra */
+            }
+
+            .energy-progress-container { 
+                max-width: 100% !important; 
+                min-width: 100% !important; 
+                width: 100% !important; 
+                height: 45px !important; /* Barra mais grossa no celular */
+                margin: 0 auto;
+            }
+
+            .energy-bar-text {
+                line-height: 45px !important; /* Acompanha a nova altura */
+                font-size: 1rem !important;
+            }
+
+            .btn-primary { 
+                width: 100%; 
+                justify-content: center; 
+                text-align: center; 
+            }
+        }
+    </style>
+</head>
+<body>
+    <main style="padding-top: 20px;"> 
+        <section class="classification-section" id="classification-area">
+            
+            <a href="/" class="btn-back" style="margin-bottom: 2rem; display: inline-flex; align-items: center; gap: 8px; color: var(--primary); text-decoration: none; font-weight: 600;">
+                <i class="fas fa-arrow-left"></i> Voltar para o Início
+            </a>
+
+            <div class="classification-header">
+                <h2 style="font-size: 2.2rem; color: var(--primary-dark);">Assistente SmartBio</h2>
+                <div class="energy-progress-container">
+                    <div class="energy-bar-text">Energia Acumulada: <span id="accumulated-val">0.00</span> / 50 kWh</div>
+                    <div id="energy-bar-fill"></div>
+                </div>
+            </div>
+
+            <p style="color: var(--text-light); margin-bottom: 1.5rem; text-align: center;">Pergunte sobre qual resíduo utilizar ou anexe uma imagem para análise.</p>
+
+            <div class="chat-input-wrapper">
+                <div class="chat-input-container">
+                    <button class="btn-icon" id="btn-attach-file" title="Anexar imagem">
+                        <i class="fas fa-plus"></i>
+                    </button>
+                    <input type="file" id="image-upload" class="hidden" accept="image/*">
+                    
+                    <input type="text" id="user-prompt" placeholder="Pergunte ao SmartBio..." autocomplete="off">
+                    
+                    <button class="btn-icon btn-send" id="btn-send-prompt" title="Enviar pergunta">
+                        <i class="fas fa-paper-plane"></i>
+                    </button>
+                </div>
+                
+                <div id="attachment-preview" class="hidden">
+                    <span id="attachment-name"><i class="fas fa-image"></i> arquivo.jpg</span>
+                    <button id="btn-remove-attachment"><i class="fas fa-times"></i></button>
+                </div>
+            </div>
+
+            <div style="text-align: center;">
+                <img id="image-preview" style="display:none;">
+            </div>
+
+            <div id="results-area" class="hidden" style="margin-top: 3rem;">
+                
+                <div id="user-question-display" class="hidden" style="background: #f3f4f6; padding: 1.5rem; border-radius: 15px; margin-bottom: 1.5rem; border-left: 6px solid #6b7280;">
+                    <strong style="color: #374151;"><i class="fas fa-user-circle"></i> Você perguntou:</strong>
+                    <p id="user-question-text" style="margin-top: 8px; font-size: 1.05rem;"></p>
+                </div>
+
+                <div class="energy-display-info">
+                    <h3 style="color: var(--primary-dark); margin-bottom: 0.5rem;">Análise Concluída: <span id="detected-item">Analisando...</span></h3>
+                    <p style="font-size: 1.2rem; font-weight: 700;">Potencial Energético Estimado: <span id="energy-yield" style="color: var(--primary);">0</span> kWh</p>
+                    
+                    <div class="ia-feedback-box">
+                        <strong><i class="fas fa-robot"></i> Parecer da IA SMartBio:</strong>
+                        <p id="ia-text" style="margin-top: 10px;">Aguardando retorno do servidor Java...</p>
+                    </div>
+                </div>
+
+                <div style="margin-top: 2rem;">
+                    <label style="font-weight: 700; color: var(--primary-dark);">O que deseja fazer com essa energia?</label>
+                    <select id="usage-option" class="usage-select">
+                        <option value="">Selecione uma aplicação...</option>
+                        <option value="carro">Carregar carro elétrico</option>
+                        <option value="paes">Geração de pães</option>
+                        <option value="casa">Autoconsumo de uma casa</option>
+                    </select>
+                </div>
+
+                <div id="usage-result" class="hidden" style="margin-top: 2rem; padding: 1.5rem; background: #e8f5e9; border-radius: 12px; font-weight: 500;">
+                    <p id="calculation-text"></p>
+                    <button class="btn-primary" style="margin-top: 1.5rem; background: var(--accent);" id="btn-confirm-energy">Confirmar e Utilizar Energia</button>
+                </div>
+            </div>
+        </section>
+    </main>
+    <script src="/site/src/main/resources/static/main.js"></script>
+</body>
+</html>

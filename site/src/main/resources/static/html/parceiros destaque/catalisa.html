@@ -24,12 +24,13 @@
             padding: 0; 
             box-sizing: border-box; 
         }
-        
+
+        /* Adicionado para garantir o limite da tela no mobile */
         html, body {
             width: 100%;
             overflow-x: hidden; 
         }
-
+        
         body { 
             font-family: 'Inter', sans-serif; 
             background-color: var(--bg-body); 
@@ -116,6 +117,34 @@
             color: var(--primary); 
         }
 
+        /* Novos botões mantidos e organizados */
+        .btn-instagram {
+            background: #333 !important; 
+            transition: all 0.4s ease !important;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .btn-instagram:hover {
+            background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%) !important;
+            transform: scale(1.05);
+            box-shadow: 0 4px 15px rgba(214, 36, 159, 0.4);
+        }
+
+        .btn-wixsite {
+            background: #3F8443 !important;
+            transition: all 0.4s ease !important;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .btn-wixsite:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 15px rgba(3, 133, 1, 0.4);
+        }
+
         .btn-primary { 
             text-decoration: none; background: var(--primary); color: var(--white); 
             padding: 1.2rem 2.8rem; border-radius: 50px; font-weight: 600; 
@@ -128,7 +157,6 @@
             transform: translateY(-3px); 
         }
 
-        /* Estrutura do container central */
         .container { 
             max-width: 1100px; 
             margin: 4rem auto; 
@@ -203,7 +231,7 @@
 
         @media (max-width: 768px) {
             
-            /* 1. Responsividade do Navbar (Mesmo do Index) */
+            /* 1. Navbar Responsiva */
             .desktop-only { display: none !important; }
             .mobile-only { display: block; }
             
@@ -251,25 +279,31 @@
             .btn-mobile-green { background: var(--primary) !important; color: white !important; border-radius: 8px; padding: 10px !important; display: block; }
             .btn-mobile-yellow { background: var(--accent) !important; color: white !important; border-radius: 8px; padding: 10px !important; display: block; }
 
-            /* 2. Responsividade Específica da Página de Parcerias */
+            /* 2. Responsividade Específica para Parcerias e Botões */
             .container {
-                padding: 0 20px; /* Evita que o conteúdo cole na tela do celular */
-                margin: 2rem auto; /* Reduz a margem superior no mobile */
+                padding: 0 20px; 
+                margin: 2rem auto; 
             }
 
             .partner-card {
-                flex-direction: column; /* Empilha a imagem acima do texto */
-                text-align: center; /* Centraliza o texto */
+                flex-direction: column; 
+                text-align: center; 
                 padding: 1.5rem;
             }
 
             .partner-img {
-                margin-right: 0; /* Tira a margem da direita */
-                margin-bottom: 1.5rem; /* Adiciona espaço embaixo da imagem */
+                margin-right: 0; 
+                margin-bottom: 1.5rem; 
             }
 
             .partner-info p {
-                text-align: center; /* Centraliza o texto para leitura no mobile */
+                text-align: center; 
+            }
+
+            /* Adapta os novos botões para ocupar 100% da largura no celular, se estiverem dentro do card */
+            .btn-instagram, .btn-wixsite {
+                width: 100%;
+                margin-top: 10px;
             }
         }
     </style>
@@ -310,61 +344,122 @@
     </header>
 
     <main class="container">
-        <a href="/" class="btn-back"><i class="fas fa-arrow-left"></i> Voltar para o Início</a>
+        <a href="/site/src/main/resources/static/html/parcerias.html" class="btn-back"><i class="fas fa-arrow-left"></i> Voltar</a>
 
-        <h1 style="font-size: 2.5rem; margin-bottom: 3rem; color: var(--primary-dark);">Nossos Parceiros Destaques</h1>
-        
-        <a href="./parceiros destaque/procriou.html" style="text-decoration: none; color: inherit;">
-            <div class="partner-card">
-                <img src="/site/src/main/resources/static/assets/img/procriou.jpg" alt="Logo CESAR" class="partner-img" onerror="this.src='https://via.placeholder.com/180?text=Logo+Parceiro'">
-                <div class="partner-info">
-                    <h2>PROCRIU - Centro de Referência Pela Vida</h2>
-                    <p>
-                        O <strong>PROCRIU</strong> (Programa Criança Urgente) é uma organização social sem fins lucrativos fundamentada na <strong>Pedagogia do Afeto</strong> e na Economia Solidária. Com sede na Ilha de Deus, Recife, a instituição atua há décadas no fortalecimento de vínculos comunitários, oferecendo educação integral, apoio psicossocial e fomento ao empreendedorismo local para crianças, jovens e suas famílias.
-                    </p>
-                </div>
+        <section id="doc-catalisa" style="background: white; padding: 4rem; border-radius: 24px; margin-top: 4rem; box-shadow: 0 10px 30px rgba(0,0,0,0.05); color: #374151;">
+    
+            <div style="border-bottom: 2px solid var(--primary); margin-bottom: 30px; display: flex; justify-content: space-between; align-items: flex-end;">
+                <h2 style="color: var(--primary-dark); font-size: 2rem; margin-bottom: 10px;">Documentação: Catalisa ICT (SEBRAE)</h2>
+                <span style="color: var(--text-light); font-size: 0.85rem; margin-bottom: 10px;">Última atualização: Junho de 2026</span>
             </div>
-        </a>
 
-        <a href="./parceiros destaque/catalisa.html" style="text-decoration: none; color: inherit;">
-            <div class="partner-card">
-                <img src="/site/src/main/resources/static/assets/img/catalisa.png" alt="Logo Catalisa ICT SEBRAE" class="partner-img" onerror="this.src='https://via.placeholder.com/180?text=Sebrae+Catalisa'">
-                <div class="partner-info">
-                    <h2>Catalisa ICT - SEBRAE</h2>
-                    <p>
-                        O <strong>Catalisa ICT</strong> é uma iniciativa nacional do <strong>SEBRAE</strong> voltada para acelerar a transformação de pesquisas científicas em negócios inovadores de mercado. O programa apoia pesquisadores e projetos tecnológicos, oferecendo fomento financeiro, mentoria estratégica e conexão com o ecossistema de inovação para estruturar ideias acadêmicas em soluções escaláveis e sustentáveis.
+            <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 40px;">
+                
+                <div>
+                    <p style="font-size: 1.1rem; margin-bottom: 20px;">
+                        O <strong>Catalisa ICT</strong> é um programa estruturante promovido pelo <strong>SEBRAE</strong>, desenhado para acelerar a inserção de tecnologias de base acadêmica no mercado. Mais do que um edital de fomento, o programa atua como um ecossistema de inovação, conectando pesquisadores a oportunidades reais de negócios.
                     </p>
-                </div>
-            </div>
-        </a>
 
-        <a href="./parceiros destaque/incubatec.html" style="text-decoration: none; color: inherit;">
-            <div class="partner-card">
-                <img src="/site/src/main/resources/static/assets/img/incubatec-removebg-preview.png" alt="Logo Catalisa ICT SEBRAE" class="partner-img" onerror="this.src='https://via.placeholder.com/180?text=Sebrae+Catalisa'">
-                <div class="partner-info">
-                    <h2>INCUBATEC (IPE/UFRPE)</h2>
+                    <h3 style="color: var(--primary); margin: 25px 0 15px 0; display: flex; align-items: center; gap: 10px;">
+                        <i class="fas fa-rocket"></i> Aceleração Tecnológica
+                    </h3>
                     <p>
-                        A <strong>INCUBATEC</strong>, incubadora de empresas de base tecnológica do Instituto de Pesquisas Estratégicas (IPE) vinculada à <strong>Universidade Federal Rural de Pernambuco (UFRPE)</strong>, funciona como o berço científico da SmartBio. É neste ecossistema acadêmico que nossa pesquisa ganha suporte para se tornar uma tecnologia aplicada e segura.
+                        O programa foca na transição do conhecimento científico para produtos e serviços inovadores. Através de mentorias, capacitações e acesso a capital, o Catalisa ICT permite que soluções complexas superem o chamado "vale da morte" da inovação, validando seus modelos de negócio e escalabilidade.
                     </p>
-                </div>
-            </div>
-        </a>
 
-        <h1 style="font-size: 2.5rem; margin-bottom: 3rem; color: var(--primary-dark);">Nossos Parceiros Estratégicos</h1>
-        <a href="./parceiros destaque/cesar-school.html" style="text-decoration: none; color: inherit;">
-            <div class="partner-card">
-                <img src="/site/src/main/resources/static/assets/img/CesarSchool-Logo.png" alt="Logo CESAR" class="partner-img" onerror="this.src='https://via.placeholder.com/180?text=Logo+Parceiro'">
-                <div class="partner-info">
-                    <h2>CESAR School - Squad 18 (Porto Digital)</h2>
+                    <h3 style="color: var(--primary); margin: 25px 0 15px 0; display: flex; align-items: center; gap: 10px;">
+                        <i class="fas fa-handshake"></i> Cooperação SmartBio
+                    </h3>
+                    <p style="margin-bottom: 15px;">
+                        Apoiada pelo edital do Catalisa ICT, a <strong>SmartBio</strong> encontra o ambiente ideal para maturar sua tecnologia. A parceria viabiliza o aprimoramento dos nossos sistemas embarcados voltados para a gestão de biodigestores, garantindo que o desenvolvimento técnico caminhe lado a lado com a viabilidade econômica.
+                    </p>
+
+                    <h3 style="color: var(--primary); margin: 25px 0 15px 0; display: flex; align-items: center; gap: 10px;">
+                        <i class="fas fa-chart-line"></i> Objetivos da Parceria
+                    </h3>
                     <p>
-                        O CESAR School é o braço educacional do CESAR, um dos maiores centros de inovação do Brasil. Nossa parceria foca no desenvolvimento técnico do ecossistema SmartBio, unindo a excelência acadêmica com a aplicação prática de tecnologias disruptivas em análise de sistemas e sustentabilidade rural.
+                        A inserção da SmartBio no Catalisa ICT visa estruturar a base do projeto através de:
                     </p>
+                    <ul style="margin-left: 20px; margin-top: 10px; line-height: 2;">
+                        <li><strong>Validação de Mercado:</strong> Estruturação do modelo de negócios e definição clara do público-alvo.</li>
+                        <li><strong>Maturidade Tecnológica (TRL):</strong> Avanço da pesquisa para um protótipo comercialmente viável e testado.</li>
+                        <li><strong>Networking Estratégico:</strong> Conexão com investidores, mentores e especialistas do setor de energias renováveis.</li>
+                    </ul>
+
+                    <!-- Espaço reservado para as imagens, mantendo a estrutura original -->
+                    <div style="margin-top: 30px; display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+                        <div style="text-align: center;">
+                            <div style="overflow: hidden; border-radius: 12px; height: 200px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
+                                <img src="" alt="Aceleração SEBRAE" 
+                                    style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.3s;"
+                                    onmouseover="this.style.transform='scale(1.05)'" 
+                                    onmouseout="this.style.transform='scale(1)'">
+                            </div>
+                            <p style="font-size: 0.75rem; color: var(--text-light); margin-top: 8px; font-style: italic;">
+                                Ecossistema de Inovação: SEBRAE Catalisa.
+                            </p>
+                        </div>
+
+                        <div style="text-align: center;">
+                            <div style="overflow: hidden; border-radius: 12px; height: 200px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
+                                <img src="" alt="Equipe SmartBio Catalisa" 
+                                    style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.3s;"
+                                    onmouseover="this.style.transform='scale(1.05)'" 
+                                    onmouseout="this.style.transform='scale(1)'">
+                            </div>
+                            <p style="font-size: 0.75rem; color: var(--text-light); margin-top: 8px; font-style: italic;">
+                                Maturidade Tecnológica e Validação de Mercado.
+                            </p>
+                        </div>
+                    </div>
                 </div>
+
+                <aside>
+                    <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 16px; padding: 25px; position: sticky; top: 110px;">
+                    <div style="text-align: center; margin-bottom: 20px;">
+                            <div style="width: 120px; height: 120px; margin: 0 auto; background: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; border: 4px solid #fff; box-shadow: 0 4px 10px rgba(0,0,0,0.08); overflow: hidden;">
+                                <img src="" 
+                                    alt="Logo SEBRAE" 
+                                    style="width: 80%; height: auto; object-fit: contain;">
+                            </div>
+                            <h4 style="margin-top: 15px; color: var(--primary-dark); letter-spacing: 1px;">PROGRAMA CATALISA</h4>
+                            <p style="font-size: 0.7rem; color: var(--primary); font-weight: 800; margin-top: -5px;">SEBRAE ICT</p>
+                        </div>
+                        
+                        <div style="font-size: 0.9rem;">
+                            <div style="display: flex; justify-content: space-between; padding: 10px 0; border-bottom: 1px solid #e2e8f0;">
+                                <span style="font-weight: 600;">Tipo:</span>
+                                <span>Programa de Aceleração</span>
+                            </div>
+                            <div style="display: flex; justify-content: space-between; padding: 10px 0; border-bottom: 1px solid #e2e8f0;">
+                                <span style="font-weight: 600;">Foco:</span>
+                                <span>Inovação (CT&I)</span>
+                            </div>
+                            <div style="display: flex; justify-content: space-between; padding: 10px 0; border-bottom: 1px solid #e2e8f0;">
+                                <span style="font-weight: 600;">Parceiro:</span>
+                                <span>SEBRAE</span>
+                            </div>
+                            <div style="display: flex; justify-content: space-between; padding: 10px 0; border-bottom: 1px solid #e2e8f0;">
+                                <span style="font-weight: 600;">Status:</span>
+                                <span style="color: #d97706;">Ativo</span>
+                            </div>
+                        </div>
+
+                        <div style="margin-top: 25px;">
+                            <h5 style="font-size: 0.8rem; text-transform: uppercase; color: #94a3b8; margin-bottom: 10px;">Links Oficiais</h5>
+                            <div style="display: flex; gap: 10px;">
+                                <a href="https://sebrae.com.br/subsites/catalisa-ict"
+                                    target="_blank"
+                                    class="btn-wixsite"
+                                    style="flex: 1; text-align: center; color: white; padding: 12px; border-radius: 8px; text-decoration: none;">
+                                    <i class="fas fa-globe" style="font-size: 1.2rem;"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </aside>
             </div>
-        </a>
-        
-
-
+        </section>
     </main>
 
     <footer class="site-footer">

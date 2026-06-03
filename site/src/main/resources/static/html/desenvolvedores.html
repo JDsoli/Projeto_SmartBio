@@ -25,12 +25,17 @@
             box-sizing: border-box; 
         }
 
+        /* Adicionado para garantir que nada vaze da tela */
+        html, body {
+            width: 100%;
+            overflow-x: hidden; 
+        }
+
         body { 
             font-family: 'Inter', sans-serif; 
             background-color: var(--bg-body); 
             color: var(--text-main);
             line-height: 1.6;
-            overflow-x: hidden;
             display: flex;
             flex-direction: column;
             min-height: 100vh;
@@ -103,25 +108,6 @@
             transform: translateY(-3px); 
         }
 
-        .logo-texto { 
-            font-size: 1.6rem; 
-            font-weight: 800; 
-        }
-
-        .cor-smart { 
-            color: var(--primary); 
-        } 
-        
-        .cor-bio { 
-            color: var(--primary-dark); 
-        }
-        
-        .container { 
-            max-width: 1200px; 
-            margin: 4rem auto; 
-            padding: 0 2rem; 
-        }
-
         .logo-container { 
             display: flex; 
             align-items: center; 
@@ -138,6 +124,15 @@
             font-size: 1.6rem; 
             font-weight: 800; 
             letter-spacing: -1px; 
+        }
+
+        .cor-smart { color: var(--primary); } 
+        .cor-bio { color: var(--primary-dark); }
+        
+        .container { 
+            max-width: 1200px; 
+            margin: 4rem auto; 
+            padding: 0 2rem; 
         }
 
         .btn-back { 
@@ -167,7 +162,9 @@
             justify-content: space-between;
         }
 
-        .dev-avatar { width: 100px; height: 100px; border-radius: 50%; background: #f0fdf4; margin: 0 auto 1.5rem; display: flex; align-items: center; justify-content: center; font-size: 2.5rem; color: var(--primary); border: 3px solid #e2e8f0; }
+        .dev-avatar { 
+            width: 100px; height: 100px; border-radius: 50%; background: #f0fdf4; margin: 0 auto 1.5rem; display: flex; align-items: center; justify-content: center; font-size: 2.5rem; color: var(--primary); border: 3px solid #e2e8f0; 
+        }
         .dev-card h2 { color: var(--primary-dark); font-size: 1.25rem; margin-bottom: 0.5rem; }
         .dev-role { font-weight: 700; color: var(--primary); font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 1rem; display: block; }
         .dev-bio { font-size: 0.9rem; color: #4b5563; text-align: justify; margin-bottom: 1.5rem; flex-grow: 1; }
@@ -175,30 +172,108 @@
         .project-history { background: white; border-radius: 24px; padding: 3rem; margin-top: 4rem; box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
         .timeline-item { border-left: 3px solid var(--primary); padding-left: 20px; position: relative; margin-bottom: 2rem; }
         .timeline-item::before { content: ''; position: absolute; left: -9px; top: 0; width: 15px; height: 15px; border-radius: 50%; background: var(--primary); }
+
+        /* --- INÍCIO DA RESPONSIVIDADE --- */
+        .mobile-menu-icon, .mobile-only { display: none; }
+
+        @media (max-width: 768px) {
+            
+            /* 1. Responsividade do Navbar (Padrão para todas as páginas) */
+            .desktop-only { display: none !important; }
+            .mobile-only { display: block; }
+            
+            .mobile-menu-icon {
+                display: block;
+                background: none;
+                border: none;
+                color: var(--primary);
+                font-size: 1.8rem;
+                cursor: pointer;
+                z-index: 1001;
+            }
+
+            .nav-links {
+                display: none; 
+                position: fixed;
+                top: 90px;
+                left: 0;
+                width: 100%;
+                height: auto;
+                background: white;
+                box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+                z-index: 9998;
+                padding: 2rem 0;
+            }
+
+            .nav-links.active {
+                display: flex !important; 
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .nav-links ul {
+                flex-direction: column;
+                align-items: center;
+                gap: 1.5rem;
+                width: 100%;
+            }
+
+            .nav-links ul li {
+                width: 80%;
+                text-align: center;
+            }
+
+            .btn-mobile-green { background: var(--primary) !important; color: white !important; border-radius: 8px; padding: 10px !important; display: block; }
+            .btn-mobile-yellow { background: var(--accent) !important; color: white !important; border-radius: 8px; padding: 10px !important; display: block; }
+
+            /* 2. Responsividade Específica da Página de Desenvolvedores */
+            .container {
+                padding: 0 15px; 
+                margin: 2rem auto; 
+            }
+
+            .project-history {
+                padding: 1.5rem; /* Diminui o padding interno no celular */
+                margin-top: 2rem;
+            }
+
+            .timeline-item {
+                margin-bottom: 1.5rem; /* Aperta um pouco mais os itens da timeline */
+            }
+        }
     </style>
 </head>
 <body>
 
     <header class="navbar">
-        <div class="logo-container" onclick="window.location.href='/'" style="cursor:pointer">
+        <div class="logo-container" id="nav-inicio-logo">
             <img src="/site/src/main/resources/static/assets/img/logo-smartbio2.png" alt="SmartBio Logo" class="logo-img" onerror="this.src='https://via.placeholder.com/50?text=BIO'">
             <div class="logo-texto"><span class="cor-smart">SMART</span><span class="cor-bio">BIO</span></div>
         </div>
-        <nav class="nav-links">
+        
+        <button class="mobile-menu-icon" id="mobile-menu-btn">
+            <i class="fas fa-bars"></i>
+        </button>
+
+        <nav class="nav-links" id="nav-menu">
             <ul>
-                <li><a href="/" id="link-inicio">Início</a></li>
+                <li><a href="/">Início</a></li>
                 <li><a href="#docs-area">Documentação</a></li>
                 <li><a href="./parcerias.html">Parcerias</a></li>
                 <li><a href="./desenvolvedores.html">Desenvolvedores</a></li>
-                <li><a href="#">Contato</a></li>
+                <li><a href="#"></a></li>
+                
+                <li class="mobile-only"><a href="./site/src/main/resources/templates/chatBot.html" class="btn-mobile-green">Chat</a></li>
+                <li class="mobile-only"><a href="#" onclick="showClassification()" class="btn-mobile-yellow">Simulador</a></li>
             </ul>
         </nav>
-        <div class="nav-actions-group">
+
+        <div class="nav-actions-group desktop-only">
             <a class="btn-primary btn-nav" href="/site/src/main/resources/templates/chatBot.html">
                 <i class="fas fa-comments"></i> Chat
             </a>
-            <a class="btn-primary btn-nav" id="btn-nav-classificar">
-                <i class="fas fa-leaf"></i> Classificar
+            <a href="/site/src/main/resources/static/html/simulador.html" class="btn-primary btn-nav" id="btn-nav-classificar" style="background: var(--accent);">
+                <i class="fas fa-leaf"></i> Simulador
             </a>
         </div>
     </header>
@@ -218,8 +293,8 @@
                 <span class="dev-role">Lead Front-End Developer</span>
                 <p class="dev-bio">Especialista no desenvolvimento da interface do usuário (UI) e experiência (UX). Responsável pela arquitetura Front-End, garantindo um sistema responsivo, interativo e alinhado às necessidades estratégicas dos parceiros.</p>
                 <div style="display: flex; justify-content: center; gap: 1rem;">
-                    <a href="https://github.com/JDsoli" style="color: #333;"><i class="fab fa-github"></i></a>
-                    <a href="#" style="color: #0077b5;"><i class="fab fa-linkedin"></i></a>
+                    <a href="https://github.com/LuccaSpinelli/Repositorio-Lucca" style="color: #333;"><i class="fab fa-github"></i></a>
+                    <a href="https://www.linkedin.com/in/lucca-spinelli-a65672240/" style="color: #0077b5;"><i class="fab fa-linkedin"></i></a>
                 </div>
             </div>
 
@@ -309,4 +384,5 @@
     </main>
 
 </body>
+<script src="/site/src/main/resources/static/main.js"></script>
 </html>

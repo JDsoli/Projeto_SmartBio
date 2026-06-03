@@ -24,13 +24,18 @@
             padding: 0; 
             box-sizing: border-box; 
         }
+
+        /* Adicionado para garantir o limite da tela no mobile */
+        html, body {
+            width: 100%;
+            overflow-x: hidden; 
+        }
         
         body { 
             font-family: 'Inter', sans-serif; 
             background-color: var(--bg-body); 
             color: var(--text-main);
             line-height: 1.6;
-            overflow-x: hidden;
             display: flex;
             flex-direction: column;
             min-height: 100vh;
@@ -92,13 +97,8 @@
             letter-spacing: -1px; 
         }
 
-        .cor-smart { 
-            color: var(--primary); 
-        }
-
-        .cor-bio { 
-            color: var(--primary-dark); 
-        }
+        .cor-smart { color: var(--primary); }
+        .cor-bio { color: var(--primary-dark); }
         
         .nav-links ul { 
             display: flex; 
@@ -117,8 +117,9 @@
             color: var(--primary); 
         }
 
+        /* Novos botões mantidos e organizados */
         .btn-instagram {
-            background: #333 !important; /* Cor padrão */
+            background: #333 !important; 
             transition: all 0.4s ease !important;
             display: flex;
             align-items: center;
@@ -144,7 +145,6 @@
             box-shadow: 0 4px 15px rgba(3, 133, 1, 0.4);
         }
 
-
         .btn-primary { 
             text-decoration: none; background: var(--primary); color: var(--white); 
             padding: 1.2rem 2.8rem; border-radius: 50px; font-weight: 600; 
@@ -157,7 +157,6 @@
             transform: translateY(-3px); 
         }
 
-        /*Estrutura do container central*/
         .container { 
             max-width: 1100px; 
             margin: 4rem auto; 
@@ -179,6 +178,7 @@
         .partner-card:hover { 
             transform: translateY(-5px); 
         }
+
         .partner-img { 
             width: 180px; 
             height: 180px; 
@@ -205,18 +205,20 @@
             text-decoration: none; font-weight: 600; 
             margin-bottom: 2rem; 
         }
-    
+        
         .site-footer { 
             background: #111; 
             color: var(--white); 
             padding: 5rem 5% 2rem; 
             margin-top: auto; 
         }
+
         .footer-container { 
             display: grid; 
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); 
             gap: 4rem; 
         }
+
         .footer-column a { 
             color: #9ca3af; 
             text-decoration: none; 
@@ -224,39 +226,125 @@
             margin-bottom: 0.8rem; 
         }
         
+        /* --- INÍCIO DA RESPONSIVIDADE --- */
+        .mobile-menu-icon, .mobile-only { display: none; }
+
         @media (max-width: 768px) {
-            .nav-links, .nav-action { display: none; }
+            
+            /* 1. Navbar Responsiva */
+            .desktop-only { display: none !important; }
+            .mobile-only { display: block; }
+            
+            .mobile-menu-icon {
+                display: block;
+                background: none;
+                border: none;
+                color: var(--primary);
+                font-size: 1.8rem;
+                cursor: pointer;
+                z-index: 1001;
+            }
+
+            .nav-links {
+                display: none; 
+                position: fixed;
+                top: 90px;
+                left: 0;
+                width: 100%;
+                height: auto;
+                background: white;
+                box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+                z-index: 9998;
+                padding: 2rem 0;
+            }
+
+            .nav-links.active {
+                display: flex !important; 
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .nav-links ul {
+                flex-direction: column;
+                align-items: center;
+                gap: 1.5rem;
+                width: 100%;
+            }
+
+            .nav-links ul li {
+                width: 80%;
+                text-align: center;
+            }
+
+            .btn-mobile-green { background: var(--primary) !important; color: white !important; border-radius: 8px; padding: 10px !important; display: block; }
+            .btn-mobile-yellow { background: var(--accent) !important; color: white !important; border-radius: 8px; padding: 10px !important; display: block; }
+
+            /* 2. Responsividade Específica para Parcerias e Botões */
+            .container {
+                padding: 0 20px; 
+                margin: 2rem auto; 
+            }
+
+            .partner-card {
+                flex-direction: column; 
+                text-align: center; 
+                padding: 1.5rem;
+            }
+
+            .partner-img {
+                margin-right: 0; 
+                margin-bottom: 1.5rem; 
+            }
+
+            .partner-info p {
+                text-align: center; 
+            }
+
+            /* Adapta os novos botões para ocupar 100% da largura no celular, se estiverem dentro do card */
+            .btn-instagram, .btn-wixsite {
+                width: 100%;
+                margin-top: 10px;
+            }
         }
     </style>
 </head>
 <body>
 
     <header class="navbar">
-        <div class="logo-container" onclick="window.location.href='/'" style="cursor:pointer">
+        <div class="logo-container" id="nav-inicio-logo">
             <img src="/site/src/main/resources/static/assets/img/logo-smartbio2.png" alt="SmartBio Logo" class="logo-img" onerror="this.src='https://via.placeholder.com/50?text=BIO'">
             <div class="logo-texto"><span class="cor-smart">SMART</span><span class="cor-bio">BIO</span></div>
         </div>
-        <nav class="nav-links">
+        
+        <button class="mobile-menu-icon" id="mobile-menu-btn">
+            <i class="fas fa-bars"></i>
+        </button>
+
+        <nav class="nav-links" id="nav-menu">
             <ul>
-                <li><a href="/" id="link-inicio">Início</a></li>
+                <li><a href="/">Início</a></li>
                 <li><a href="#docs-area">Documentação</a></li>
-                <li><a href="/site/src/main/resources/static/html/parcerias.html">Parcerias</a></li>
-                <li><a href="/site/src/main/resources/static/html/desenvolvedores.html">Desenvolvedores</a></li>
-                <li><a href="#">Contato</a></li>
+                <li><a href="./parcerias.html">Parcerias</a></li>
+                <li><a href="./desenvolvedores.html">Desenvolvedores</a></li>
+                <li><a href="#"></a></li>
+                
+                <li class="mobile-only"><a href="./site/src/main/resources/templates/chatBot.html" class="btn-mobile-green">Chat</a></li>
+                <li class="mobile-only"><a href="#" onclick="showClassification()" class="btn-mobile-yellow">Simulador</a></li>
             </ul>
         </nav>
-        <div class="nav-actions-group">
+
+        <div class="nav-actions-group desktop-only">
             <a class="btn-primary btn-nav" href="/site/src/main/resources/templates/chatBot.html">
                 <i class="fas fa-comments"></i> Chat
             </a>
-            <a class="btn-primary btn-nav" id="btn-nav-classificar">
-                <i class="fas fa-leaf"></i> Classificar
+            <a href="/site/src/main/resources/static/html/simulador.html" class="btn-primary btn-nav" id="btn-nav-classificar" style="background: var(--accent);">
+                <i class="fas fa-leaf"></i> Simulador
             </a>
         </div>
     </header>
 
     <main class="container">
-        <a href="/" class="btn-back"><i class="fas fa-arrow-left"></i> Voltar para o Início</a>
+        <a href="/site/src/main/resources/static/html/parcerias.html" class="btn-back"><i class="fas fa-arrow-left"></i> Voltar</a>
 
         <section id="doc-procriu" style="background: white; padding: 4rem; border-radius: 24px; margin-top: 4rem; box-shadow: 0 10px 30px rgba(0,0,0,0.05); color: #374151;">
     
@@ -277,6 +365,13 @@
                     </h3>
                     <p>
                         A Ilha de Deus é uma comunidade centenária de pescadores e catadores de moluscos. Historicamente negligenciada pelo poder público, a comunidade transformou a autogestão em sobrevivência. O PROCRIU surge nesse cenário não apenas para oferecer assistência, mas para formalizar a <strong>Pedagogia do Afeto</strong>, método que utiliza o acolhimento como base para o aprendizado técnico e cidadão.
+                    </p>
+
+                    <h3 style="color: var(--primary); margin: 25px 0 15px 0; display: flex; align-items: center; gap: 10px;">
+                        <i class="fas fa-tools"></i> Cooperação Técnica SmartBio
+                    </h3>
+                    <p style="margin-bottom: 15px;">
+                        Acreditando que o acesso à tecnologia é um facilitador essencial da Pedagogia do Afeto, a SmartBio firmou uma parceria de cooperação com o PROCRIU através da prestação de <strong>serviço voluntário especializado</strong>. Nossa equipe realizou a manutenção integral do laboratório de informática, abrangendo a revisão de hardware e firmware de 23 computadores, incluindo processos de formatação e otimização de sistemas, garantindo que a comunidade tenha uma infraestrutura tecnológica robusta para seus projetos educacionais.
                     </p>
 
                     <h3 style="color: var(--primary); margin: 25px 0 15px 0; display: flex; align-items: center; gap: 10px;">
@@ -389,7 +484,7 @@
             <div class="footer-column">
                 <h2 style="color: var(--primary);">Social</h2>
                 <div style="display: flex; gap: 1.5rem; font-size: 1.5rem;">
-                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                    <a href="https://www.linkedin.com/in/smartbio-inova-simples-68ab85407?utm_source=share_via&utm_content=profile&utm_medium=member_android"><i class="fab fa-linkedin"></i></a>
                     <a href="https://github.com/JDsoli/Projeto_SmartBio"><i class="fab fa-github"></i></a>
                     <a href="#"><i class="fab fa-instagram"></i></a>
                 </div>
@@ -400,4 +495,5 @@
         </p>
     </footer>
 </body>
+<script src="/site/src/main/resources/static/main.js"></script>
 </html>

@@ -49,6 +49,26 @@
             z-index: 1000; 
         }
 
+        .nav-actions-group {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+
+        .btn-nav {
+            padding: 0.6rem 1.2rem !important;
+            font-size: 0.85rem !important;
+            white-space: nowrap;
+        }
+
+        #btn-nav-classificar {
+            background: var(--accent);
+        }
+
+        #btn-nav-classificar:hover {
+            background: var(--accent-dark);
+        }
+
         .logo-container { display: flex; align-items: center; gap: 15px; text-decoration: none; cursor: pointer; }
         .logo-img { height: 50px; }
         .logo-texto { font-size: 1.6rem; font-weight: 800; letter-spacing: -1px; }
@@ -229,23 +249,25 @@
 
     <header class="navbar">
         <div class="logo-container" id="nav-inicio-logo">
-            <img src="/assets/img/logo-smartbio2.png" alt="SmartBio Logo" class="logo-img" onerror="this.src='https://via.placeholder.com/50?text=BIO'">
+            <img src="./site/src/main/resources/static/assets/img/logo-smartbio2.png" alt="SmartBio Logo" class="logo-img" onerror="this.src='https://via.placeholder.com/50?text=BIO'">
             <div class="logo-texto"><span class="cor-smart">SMART</span><span class="cor-bio">BIO</span></div>
         </div>
         <nav class="nav-links">
             <ul>
                 <li><a href="#" id="link-inicio">Início</a></li>
                 <li><a href="#docs-area">Documentação</a></li>
-                <li><a href="/html/parcerias.html">Parcerias</a></li>
-                <li><a href="/html/desenvolvedores.html">Desenvolvedores</a></li>
+                <li><a href="./site/src/main/resources/static/html/parcerias.html">Parcerias</a></li>
+                <li><a href="./site/src/main/resources/static/html/desenvolvedores.html">Desenvolvedores</a></li>
                 <li><a href="#">Contato</a></li>
             </ul>
         </nav>
-        <div class="nav-action">
-            <a class="btn-primary"style="padding: 0.7rem 1.5rem; font-size: 0.9rem;" href="/chat">Experimente o chat</a>
-        </div>
-        <div class="nav-action">
-            <a class="btn-primary" id="btn-nav-classificar" style="padding: 0.7rem 1.5rem; font-size: 0.9rem;">Classificar Resíduo</a>
+        <div class="nav-actions-group">
+            <a class="btn-primary btn-nav" href="./site/src/main/resources/templates/chatBot.html">
+                <i class="fas fa-comments"></i> Chat
+            </a>
+            <a class="btn-primary btn-nav" id="btn-nav-classificar">
+                <i class="fas fa-leaf"></i> Classificar
+            </a>
         </div>
     </header>
 
@@ -253,7 +275,7 @@
         <div id="home-content">
             <section class="hero-container" id="hero-area">
                 <video autoplay muted loop playsinline id="hero-video">
-                    <source src="/assets/video/video-fundo.mp4" type="video/mp4">
+                    <source src="./site/src/main/resources/static/assets/video/video-fundo.mp4" type="video/mp4">
                 </video>
                 <div class="hero-content">
                     <h1>O Futuro da Energia Rural Começa com a Inteligência SmartBio</h1>
